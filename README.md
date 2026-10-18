@@ -4,6 +4,9 @@ A Vietnamese input-method engine in Rust, with an fcitx5 addon around it. The
 engine and all key-handling policy are Rust; the only C++ is a small facade that
 satisfies fcitx5's C++-only `InputMethodEngine` API.
 
+Six keyboard layouts are supported: Telex, Telex 2, Telex W, VNI, VIQR and the
+Microsoft positional layout.
+
 ```
 crates/vnkey-core     engine: composition, rules, flattener, phonotactics,
                        charsets, embedded spell-check dictionary
@@ -13,18 +16,66 @@ tools/defs/           input-method rules and charset tables (TSV: the data)
 tools/gen_tables.py   formats those tables into vnkey-core/src/{im_defs,charset}.rs
 ```
 
+## Build
+
+Needs a Rust toolchain (1.82+), a C++ compiler, `pkg-config`, `just`, and the
+fcitx5 development headers:
+
 ```
-just test                        # 63 tests, no system dependencies
-just check                       # factory symbol exported, no unresolved symbols
 sudo apt install libfcitx5core-dev libfcitx5config-dev libfcitx5utils-dev
-just build
-DESTDIR=/tmp/stage just install  # staging; drop DESTDIR and use sudo to install
-sudo just install
-fcitx5 -r                        # then add "VnKey" in the input methods
+just build          # -> target/release/libvnkey.so
+just test           # 63 tests, no system dependencies
+just check          # tables up to date, factory symbol exported, no undefined symbols
 ```
 
-The addon installs as `vnkey` / `libvnkey.so`, so it can be selected next
-to any other Vietnamese input method.
+The build is a justfile rather than a C++ build system: cargo compiles the
+engine, the addon logic, the cxx bridge and `cpp/facade.cpp`, and `just` links
+the shared object against the fcitx5 libraries reported by `pkg-config`.
+
+## Install
+
+fcitx5 loads addons only from the library directory it was compiled with, so
+there is no per-user install — copying the files into `/usr` requires root:
+
+```
+just build                    # as yourself
+sudo just --no-deps install   # as root: copies 12 files into /usr
+fcitx5 -r                     # restart the daemon
+```
+
+`--no-deps` matters: without it, `just install` re-runs the build under sudo and
+leaves `target/release/libvnkey.so` and `out/*.conf` owned by root, which makes
+the next user-side `just build` fail on the link step.
+
+To inspect what would be installed, or to build a package, stage it instead:
+
+```
+DESTDIR=/tmp/stage just --no-deps install
+find /tmp/stage -type f        # lib, 2 descriptors, SVG, 8 PNG sizes
+```
+
+After restarting fcitx5, add **VnKey** in the input-method list. Restart
+without the files installed and the journal reports `Could not locate library
+libvnkey.so`, which means the libdir and fcitx5's compiled-in addon directory
+disagree.
+
+```
+sudo just --no-deps uninstall  # removes exactly the installed files
+```
+
+## Data tables
+
+The input-method rules and the 16 legacy output charsets live as TSV under
+`tools/defs/`; the Rust modules `vnkey-core/src/{im_defs,charset}.rs` are
+generated from them and are never edited by hand.
+
+```
+just tables        # regenerate the .rs files from tools/defs/*.tsv
+just tables-check  # fail if the generated files have drifted (part of `just check`)
+```
+
+Regeneration needs nothing but Python 3 — no other language toolchain and no
+external checkout.
 
 ## License
 

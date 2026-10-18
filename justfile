@@ -38,7 +38,10 @@ build:
     sed 's/@PROJECT_VERSION@/{{version}}/' data/vnkey.conf.in > {{out_dir}}/vnkey.conf
     @echo "built {{shared_lib}} ({{version}})"
 
-# Install into $(DESTDIR)/usr — DESTDIR for staging, sudo for a real install.
+# Install the built files. Needs root for the copies, so build as yourself first:
+#   just build && sudo just --no-deps install
+# Running the build under sudo would leave root-owned files in target/ and out/.
+# DESTDIR stages instead of installing: DESTDIR=/tmp/stage just install
 install: build
     install -Dm755 {{shared_lib}} {{destdir}}{{libdir}}/fcitx5/libvnkey.so
     install -Dm644 {{out_dir}}/vnkey-addon.conf {{destdir}}{{datadir}}/fcitx5/addon/vnkey.conf
