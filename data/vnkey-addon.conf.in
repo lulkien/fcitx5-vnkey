@@ -1,0 +1,14 @@
+# fcitx5 addon descriptor. Library and addon id are `vnkey`; the input method is
+# listed as "VnKey" in the input-method list.
+[Addon]
+Name=VnKey
+Comment=Vietnamese input method, Rust engine
+Category=InputMethod
+Version=@PROJECT_VERSION@
+Library=libvnkey
+Type=SharedLibrary
+OnDemand=True
+Configurable=True
+
+[Dependencies]
+0=core

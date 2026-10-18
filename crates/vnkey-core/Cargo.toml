@@ -1,0 +1,9 @@
+[package]
+name = "vnkey-core"
+description = "Vietnamese input method engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license = "Unlicense"
+
+[dependencies]

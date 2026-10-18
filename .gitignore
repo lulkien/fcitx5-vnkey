@@ -1,0 +1,11 @@
+# Rust
+/target/
+
+# CMake
+/build/
+
+# Packaging output
+/dist/
+*.deb
+*.rpm
+*.tar.gz

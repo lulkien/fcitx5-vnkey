@@ -1,0 +1,57 @@
+# NOTICE
+
+This project is dedicated to the public domain (see `UNLICENSE`) to the extent
+its authors hold the rights. It also contains portions ported from other
+software, which keep their original terms. Those notices are reproduced here
+and are not optional.
+
+## Engine (`crates/vnkey-core`)
+
+Ported from a Go implementation of the same Vietnamese input-method engine,
+distributed under the MIT license:
+
+```
+Copyright (C) Luong Thanh Lam <ltlam93@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+The generated tables in `crates/vnkey-core/src/{charset,im_defs}.rs` are
+derived from that same source and carry the same terms.
+
+## Addon logic and fcitx5 façade (`crates/vnkey-addon`)
+
+Ported from LGPL-2.1-or-later software; these files are **not** public domain:
+
+```
+Copyright (C) 2018 Luong Thanh Lam <ltlam93@gmail.com>
+Copyright (C) 2022 CSSlayer <wengxt@gmail.com>
+
+SPDX-License-Identifier: LGPL-2.1-or-later
+```
+
+Full text: `LICENSES/LGPL-2.1-or-later.txt`. Redistributing a modified version
+requires keeping this notice, marking the changes, and shipping the corresponding
+source under the same license.
+
+## `crates/vnkey-addon/data/vietnamese.cm.dict`
+
+Third-party data of **unestablished provenance**. It is vendored as a runtime
+dependency of the spell-check feature; establish its origin and terms before
+redistributing this project under a claim of a single license.

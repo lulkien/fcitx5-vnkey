@@ -1,0 +1,24 @@
+[package]
+name = "vnkey-addon"
+description = "fcitx5 addon logic for the VnKey Vietnamese input method"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license = "LGPL-2.1-or-later"
+build = "build.rs"
+
+[lib]
+crate-type = ["rlib", "staticlib"]
+
+[dependencies]
+vnkey-core = { path = "../vnkey-core" }
+cxx = { version = "1", optional = true }
+
+[build-dependencies]
+# Not optional: the build script must compile even when the ffi feature is off.
+cxx-build = "1"
+
+[features]
+default = []
+# Builds the cxx bridge (and the C++ façade when fcitx5 headers are present).
+ffi = ["dep:cxx"]
