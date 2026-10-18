@@ -35,7 +35,7 @@ SOFTWARE.
 The generated tables in `crates/vnkey-core/src/{charset,im_defs}.rs` are
 derived from that same source and carry the same terms.
 
-## Addon logic and fcitx5 façade (`crates/vnkey-addon`)
+## Addon logic and fcitx5 facade (`crates/vnkey-addon`)
 
 Ported from LGPL-2.1-or-later software; these files are **not** public domain:
 

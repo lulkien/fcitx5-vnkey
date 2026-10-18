@@ -1,0 +1,83 @@
+# Input-method definitions: one row per key binding, grouped by input method.
+# Columns: input-method<TAB>key<TAB>DSL rule
+# Row order matters: the first row of a super key wins (the "uow" shortcut).
+# Tone rules (Unicode name): ToneRemove, ToneAcute (U+0301), ToneGrave (U+0300),
+# ToneHookAbove (U+0309), ToneTilde (U+0303), ToneDotBelow (U+0323).
+# Escapes: \\ backslash, \t tab, \n newline, \uXXXX codepoint.
+Telex	z	ToneRemove
+Telex	s	ToneAcute
+Telex	f	ToneGrave
+Telex	r	ToneHookAbove
+Telex	x	ToneTilde
+Telex	j	ToneDotBelow
+Telex	a	A_Â
+Telex	e	E_Ê
+Telex	o	O_Ô
+Telex	w	UOA_ƯƠĂ
+Telex	d	D_Đ
+VNI	0	ToneRemove
+VNI	1	ToneAcute
+VNI	2	ToneGrave
+VNI	3	ToneHookAbove
+VNI	4	ToneTilde
+VNI	5	ToneDotBelow
+VNI	6	AEO_ÂÊÔ
+VNI	7	UO_ƯƠ
+VNI	8	A_Ă
+VNI	9	D_Đ
+VIQR	0	ToneRemove
+VIQR	'	ToneAcute
+VIQR	`	ToneGrave
+VIQR	?	ToneHookAbove
+VIQR	~	ToneTilde
+VIQR	.	ToneDotBelow
+VIQR	^	AEO_ÂÊÔ
+VIQR	+	UO_ƯƠ
+VIQR	*	UO_ƯƠ
+VIQR	(	A_Ă
+VIQR	d	D_Đ
+Microsoft layout	8	ToneAcute
+Microsoft layout	5	ToneGrave
+Microsoft layout	6	ToneHookAbove
+Microsoft layout	7	ToneTilde
+Microsoft layout	9	ToneDotBelow
+Microsoft layout	1	__ă
+Microsoft layout	!	_Ă
+Microsoft layout	2	__â
+Microsoft layout	@	_Â
+Microsoft layout	3	__ê
+Microsoft layout	#	_Ê
+Microsoft layout	4	__ô
+Microsoft layout	$	_Ô
+Microsoft layout	0	__đ
+Microsoft layout	)	_Đ
+Microsoft layout	[	__ư
+Microsoft layout	{	_Ư
+Microsoft layout	]	__ơ
+Microsoft layout	}	_Ơ
+Telex 2	z	ToneRemove
+Telex 2	s	ToneAcute
+Telex 2	f	ToneGrave
+Telex 2	r	ToneHookAbove
+Telex 2	x	ToneTilde
+Telex 2	j	ToneDotBelow
+Telex 2	a	A_Â
+Telex 2	e	E_Ê
+Telex 2	o	O_Ô
+Telex 2	w	UOA_ƯƠĂ__Ư
+Telex 2	d	D_Đ
+Telex 2	]	__ư
+Telex 2	[	__ơ
+Telex 2	}	_Ư
+Telex 2	{	_Ơ
+Telex W	z	ToneRemove
+Telex W	s	ToneAcute
+Telex W	f	ToneGrave
+Telex W	r	ToneHookAbove
+Telex W	x	ToneTilde
+Telex W	j	ToneDotBelow
+Telex W	a	A_Â
+Telex W	e	E_Ê
+Telex W	o	O_Ô
+Telex W	w	UOA_ƯƠĂ__Ư
+Telex W	d	D_Đ

@@ -1,8 +1,8 @@
 //! Vietnamese input method engine.
 //!
 //! Composition model, rule DSL and phonotactic tables for Telex/VNI/VIQR-style
-//! input. The data tables in `charset` and `im_defs` are hand-maintained: treat
-//! a change there as a behaviour change and cover it with a test.
+//! input. The data tables in `charset` and `im_defs` are generated from the
+//! neutral tables in `tools/defs/` by `tools/gen_tables.py`.
 //!
 //! See `NOTICE` for the provenance of the ported portions.
 

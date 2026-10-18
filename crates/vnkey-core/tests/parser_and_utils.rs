@@ -8,12 +8,12 @@ use vnkey_core::{EffectType, Mark, Tone};
 
 #[test]
 fn parse_tone_rules() {
-    let rules = parse_rules('z', "XoaDauThanh");
+    let rules = parse_rules('z', "ToneRemove");
     assert_eq!(rules.len(), 1);
     assert_eq!(rules[0].effect_type, Some(EffectType::Tone));
     assert_eq!(rules[0].tone(), Tone::None);
 
-    let rules = parse_rules('x', "DauNga");
+    let rules = parse_rules('x', "ToneTilde");
     assert_eq!(rules.len(), 1);
     assert_eq!(rules[0].effect_type, Some(EffectType::Tone));
     assert_eq!(rules[0].tone(), Tone::Tilde);

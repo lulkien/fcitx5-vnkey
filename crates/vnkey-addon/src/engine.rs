@@ -2,7 +2,7 @@
 //!
 //! Holds the preedit / commit buffers and the policy that decides when to fall
 //! back to raw keystrokes. All of it is plain Rust; the only C++ in the project
-//! is the fcitx5 façade that calls into it.
+//! is the fcitx5 facade that calls into it.
 
 use std::collections::HashSet;
 
@@ -93,7 +93,7 @@ impl VnKeyEngine {
     }
 
     // =====================================================================
-    // Public surface used by the fcitx5 façade
+    // Public surface used by the fcitx5 facade
     // =====================================================================
 
     /// Process one key. Returns `true` when the key must be swallowed.

@@ -18,7 +18,7 @@ fn main() {
         return;
     }
 
-    // The façade needs fcitx5 headers. Without them we still build the Rust
+    // The facade needs fcitx5 headers. Without them we still build the Rust
     // side of the bridge, so `cargo check --features ffi` works anywhere.
     let facade_enabled = std::env::var_os("FCITX5_ADDON_SKIP_FACADE").is_none()
         && pkg_config(&["--exists", "Fcitx5Core"]).is_some();

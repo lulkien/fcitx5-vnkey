@@ -1,5 +1,5 @@
 /*
- * VnKey — fcitx5 façade.
+ * VnKey — fcitx5 facade.
  *
  * SPDX-FileCopyrightText: 2022-2022 CSSlayer <wengxt@gmail.com>
  * SPDX-FileCopyrightText: 2026 Bamboo Rust port contributors

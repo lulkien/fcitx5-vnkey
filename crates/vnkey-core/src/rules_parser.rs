@@ -10,12 +10,12 @@ use crate::utils::{add_tone_to_char, mark_family, find_mark_from_char, is_vowel}
 
 fn tone_from_name(name: &str) -> Option<Tone> {
     match name {
-        "XoaDauThanh" => Some(Tone::None),
-        "DauSac" => Some(Tone::Acute),
-        "DauHuyen" => Some(Tone::Grave),
-        "DauNga" => Some(Tone::Tilde),
-        "DauNang" => Some(Tone::Dot),
-        "DauHoi" => Some(Tone::Hook),
+        "ToneRemove" => Some(Tone::None),
+        "ToneAcute" => Some(Tone::Acute),
+        "ToneGrave" => Some(Tone::Grave),
+        "ToneTilde" => Some(Tone::Tilde),
+        "ToneDotBelow" => Some(Tone::Dot),
+        "ToneHookAbove" => Some(Tone::Hook),
         _ => None,
     }
 }

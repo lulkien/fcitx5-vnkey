@@ -1,0 +1,1850 @@
+# Legacy output charsets: one row per code point, grouped by charset.
+# Columns: charset<TAB>input char<TAB>output string
+# Row order is preserved but not meaningful.
+# Escapes: \\ backslash, \t tab, \n newline, \uXXXX codepoint.
+TCVN3 (ABC)	đ	®
+TCVN3 (ABC)	â	©
+TCVN3 (ABC)	ă	¨
+TCVN3 (ABC)	ê	ª
+TCVN3 (ABC)	ô	«
+TCVN3 (ABC)	ơ	¬
+TCVN3 (ABC)	ư	\u00AD
+TCVN3 (ABC)	á	¸
+TCVN3 (ABC)	à	µ
+TCVN3 (ABC)	ả	¶
+TCVN3 (ABC)	ã	·
+TCVN3 (ABC)	ạ	¹
+TCVN3 (ABC)	ấ	Ê
+TCVN3 (ABC)	ầ	Ç
+TCVN3 (ABC)	ẩ	È
+TCVN3 (ABC)	ẫ	É
+TCVN3 (ABC)	ậ	Ë
+TCVN3 (ABC)	ắ	¾
+TCVN3 (ABC)	ằ	»
+TCVN3 (ABC)	ẳ	¼
+TCVN3 (ABC)	ẵ	½
+TCVN3 (ABC)	ặ	Æ
+TCVN3 (ABC)	é	Ð
+TCVN3 (ABC)	è	Ì
+TCVN3 (ABC)	ẻ	Î
+TCVN3 (ABC)	ẽ	Ï
+TCVN3 (ABC)	ẹ	Ñ
+TCVN3 (ABC)	ế	Õ
+TCVN3 (ABC)	ề	Ò
+TCVN3 (ABC)	ể	Ó
+TCVN3 (ABC)	ễ	Ô
+TCVN3 (ABC)	ệ	Ö
+TCVN3 (ABC)	í	Ý
+TCVN3 (ABC)	ì	×
+TCVN3 (ABC)	ỉ	Ø
+TCVN3 (ABC)	ĩ	Ü
+TCVN3 (ABC)	ị	Þ
+TCVN3 (ABC)	ó	ã
+TCVN3 (ABC)	ò	ß
+TCVN3 (ABC)	ỏ	á
+TCVN3 (ABC)	õ	â
+TCVN3 (ABC)	ọ	ä
+TCVN3 (ABC)	ố	è
+TCVN3 (ABC)	ồ	å
+TCVN3 (ABC)	ổ	æ
+TCVN3 (ABC)	ỗ	ç
+TCVN3 (ABC)	ộ	é
+TCVN3 (ABC)	ớ	í
+TCVN3 (ABC)	ờ	ê
+TCVN3 (ABC)	ở	ë
+TCVN3 (ABC)	ỡ	ì
+TCVN3 (ABC)	ợ	î
+TCVN3 (ABC)	ú	ó
+TCVN3 (ABC)	ù	ï
+TCVN3 (ABC)	ủ	ñ
+TCVN3 (ABC)	ũ	ò
+TCVN3 (ABC)	ụ	ô
+TCVN3 (ABC)	ứ	ø
+TCVN3 (ABC)	ừ	õ
+TCVN3 (ABC)	ử	ö
+TCVN3 (ABC)	ữ	÷
+TCVN3 (ABC)	ự	ù
+TCVN3 (ABC)	ý	ý
+TCVN3 (ABC)	ỳ	ú
+TCVN3 (ABC)	ỷ	û
+TCVN3 (ABC)	ỹ	ü
+TCVN3 (ABC)	ỵ	þ
+TCVN3 (ABC)	Đ	§
+TCVN3 (ABC)	Â	¢
+TCVN3 (ABC)	Ă	¡
+TCVN3 (ABC)	Ê	£
+TCVN3 (ABC)	Ô	¤
+TCVN3 (ABC)	Ơ	¥
+TCVN3 (ABC)	Ư	¦
+TCVN3 (ABC)	Á	¸
+TCVN3 (ABC)	À	µ
+TCVN3 (ABC)	Ả	¶
+TCVN3 (ABC)	Ã	·
+TCVN3 (ABC)	Ạ	¹
+TCVN3 (ABC)	Ấ	Ê
+TCVN3 (ABC)	Ầ	Ç
+TCVN3 (ABC)	Ẩ	È
+TCVN3 (ABC)	Ẫ	É
+TCVN3 (ABC)	Ậ	Ë
+TCVN3 (ABC)	Ắ	¾
+TCVN3 (ABC)	Ằ	»
+TCVN3 (ABC)	Ẳ	¼
+TCVN3 (ABC)	Ẵ	½
+TCVN3 (ABC)	Ặ	Æ
+TCVN3 (ABC)	É	Ð
+TCVN3 (ABC)	È	Ì
+TCVN3 (ABC)	Ẻ	Î
+TCVN3 (ABC)	Ẽ	Ï
+TCVN3 (ABC)	Ẹ	Ñ
+TCVN3 (ABC)	Ế	Õ
+TCVN3 (ABC)	Ề	Ò
+TCVN3 (ABC)	Ể	Ó
+TCVN3 (ABC)	Ễ	Ô
+TCVN3 (ABC)	Ệ	Ö
+TCVN3 (ABC)	Í	Ý
+TCVN3 (ABC)	Ì	×
+TCVN3 (ABC)	Ỉ	Ø
+TCVN3 (ABC)	Ĩ	Ü
+TCVN3 (ABC)	Ị	Þ
+TCVN3 (ABC)	Ó	ã
+TCVN3 (ABC)	Ò	ß
+TCVN3 (ABC)	Ỏ	á
+TCVN3 (ABC)	Õ	â
+TCVN3 (ABC)	Ọ	ä
+TCVN3 (ABC)	Ố	è
+TCVN3 (ABC)	Ồ	å
+TCVN3 (ABC)	Ổ	æ
+TCVN3 (ABC)	Ỗ	ç
+TCVN3 (ABC)	Ộ	é
+TCVN3 (ABC)	Ớ	í
+TCVN3 (ABC)	Ờ	ê
+TCVN3 (ABC)	Ở	ë
+TCVN3 (ABC)	Ỡ	ì
+TCVN3 (ABC)	Ợ	î
+TCVN3 (ABC)	Ú	ó
+TCVN3 (ABC)	Ù	ï
+TCVN3 (ABC)	Ủ	ñ
+TCVN3 (ABC)	Ũ	ò
+TCVN3 (ABC)	Ụ	ô
+TCVN3 (ABC)	Ứ	ø
+TCVN3 (ABC)	Ừ	õ
+TCVN3 (ABC)	Ử	ö
+TCVN3 (ABC)	Ữ	÷
+TCVN3 (ABC)	Ự	ù
+TCVN3 (ABC)	Ý	ý
+TCVN3 (ABC)	Ỳ	ú
+TCVN3 (ABC)	Ỷ	û
+TCVN3 (ABC)	Ỹ	ü
+TCVN3 (ABC)	Ỵ	þ
+VNI Windows	đ	ñ
+VNI Windows	â	aâ
+VNI Windows	ă	aê
+VNI Windows	ê	eâ
+VNI Windows	ô	oâ
+VNI Windows	ơ	ô
+VNI Windows	ư	ö
+VNI Windows	á	aù
+VNI Windows	à	aø
+VNI Windows	ả	aû
+VNI Windows	ã	aõ
+VNI Windows	ạ	aï
+VNI Windows	ấ	aá
+VNI Windows	ầ	aà
+VNI Windows	ẩ	aå
+VNI Windows	ẫ	aã
+VNI Windows	ậ	aä
+VNI Windows	ắ	aé
+VNI Windows	ằ	aè
+VNI Windows	ẳ	aú
+VNI Windows	ẵ	aü
+VNI Windows	ặ	aë
+VNI Windows	é	eù
+VNI Windows	è	eø
+VNI Windows	ẻ	eû
+VNI Windows	ẽ	eõ
+VNI Windows	ẹ	eï
+VNI Windows	ế	eá
+VNI Windows	ề	eà
+VNI Windows	ể	eå
+VNI Windows	ễ	eã
+VNI Windows	ệ	eä
+VNI Windows	í	í
+VNI Windows	ì	ì
+VNI Windows	ỉ	æ
+VNI Windows	ĩ	ó
+VNI Windows	ị	ò
+VNI Windows	ó	où
+VNI Windows	ò	oø
+VNI Windows	ỏ	oû
+VNI Windows	õ	oõ
+VNI Windows	ọ	oï
+VNI Windows	ố	oá
+VNI Windows	ồ	oà
+VNI Windows	ổ	oå
+VNI Windows	ỗ	oã
+VNI Windows	ộ	oä
+VNI Windows	ớ	ôù
+VNI Windows	ờ	ôø
+VNI Windows	ở	ôû
+VNI Windows	ỡ	ôõ
+VNI Windows	ợ	ôï
+VNI Windows	ú	uù
+VNI Windows	ù	uø
+VNI Windows	ủ	uû
+VNI Windows	ũ	uõ
+VNI Windows	ụ	uï
+VNI Windows	ứ	öù
+VNI Windows	ừ	öø
+VNI Windows	ử	öû
+VNI Windows	ữ	öõ
+VNI Windows	ự	öï
+VNI Windows	ý	yù
+VNI Windows	ỳ	yø
+VNI Windows	ỷ	yû
+VNI Windows	ỹ	yõ
+VNI Windows	ỵ	î
+VNI Windows	Đ	Ñ
+VNI Windows	Â	AÂ
+VNI Windows	Ă	AÊ
+VNI Windows	Ê	EÂ
+VNI Windows	Ô	OÂ
+VNI Windows	Ơ	Ô
+VNI Windows	Ư	Ö
+VNI Windows	Á	AÙ
+VNI Windows	À	AØ
+VNI Windows	Ả	AÛ
+VNI Windows	Ã	AÕ
+VNI Windows	Ạ	AÏ
+VNI Windows	Ấ	AÁ
+VNI Windows	Ầ	AÀ
+VNI Windows	Ẩ	AÅ
+VNI Windows	Ẫ	AÃ
+VNI Windows	Ậ	AÄ
+VNI Windows	Ắ	AÉ
+VNI Windows	Ằ	AÈ
+VNI Windows	Ẳ	AÚ
+VNI Windows	Ẵ	AÜ
+VNI Windows	Ặ	AË
+VNI Windows	É	EÙ
+VNI Windows	È	EØ
+VNI Windows	Ẻ	EÛ
+VNI Windows	Ẽ	EÕ
+VNI Windows	Ẹ	EÏ
+VNI Windows	Ế	EÁ
+VNI Windows	Ề	EÀ
+VNI Windows	Ể	EÅ
+VNI Windows	Ễ	EÃ
+VNI Windows	Ệ	EÄ
+VNI Windows	Í	Í
+VNI Windows	Ì	Ì
+VNI Windows	Ỉ	Æ
+VNI Windows	Ĩ	Ó
+VNI Windows	Ị	Ò
+VNI Windows	Ó	OÙ
+VNI Windows	Ò	OØ
+VNI Windows	Ỏ	OÛ
+VNI Windows	Õ	OÕ
+VNI Windows	Ọ	OÏ
+VNI Windows	Ố	OÁ
+VNI Windows	Ồ	OÀ
+VNI Windows	Ổ	OÅ
+VNI Windows	Ỗ	OÃ
+VNI Windows	Ộ	OÄ
+VNI Windows	Ớ	ÔÙ
+VNI Windows	Ờ	ÔØ
+VNI Windows	Ở	ÔÛ
+VNI Windows	Ỡ	ÔÕ
+VNI Windows	Ợ	ÔÏ
+VNI Windows	Ú	UÙ
+VNI Windows	Ù	UØ
+VNI Windows	Ủ	UÛ
+VNI Windows	Ũ	UÕ
+VNI Windows	Ụ	UÏ
+VNI Windows	Ứ	ÖÙ
+VNI Windows	Ừ	ÖØ
+VNI Windows	Ử	ÖÛ
+VNI Windows	Ữ	ÖÕ
+VNI Windows	Ự	ÖÏ
+VNI Windows	Ý	YÙ
+VNI Windows	Ỳ	YØ
+VNI Windows	Ỷ	YÛ
+VNI Windows	Ỹ	YÕ
+VNI Windows	Ỵ	Î
+Unicode tổ hợp	đ	đ
+Unicode tổ hợp	â	â
+Unicode tổ hợp	ă	ă
+Unicode tổ hợp	ê	ê
+Unicode tổ hợp	ô	ô
+Unicode tổ hợp	ơ	ơ
+Unicode tổ hợp	ư	ư
+Unicode tổ hợp	á	á
+Unicode tổ hợp	à	à
+Unicode tổ hợp	ả	ả
+Unicode tổ hợp	ã	ã
+Unicode tổ hợp	ạ	ạ
+Unicode tổ hợp	ấ	ấ
+Unicode tổ hợp	ầ	ầ
+Unicode tổ hợp	ẩ	ẩ
+Unicode tổ hợp	ẫ	ẫ
+Unicode tổ hợp	ậ	ậ
+Unicode tổ hợp	ắ	ắ
+Unicode tổ hợp	ằ	ằ
+Unicode tổ hợp	ẳ	ẳ
+Unicode tổ hợp	ẵ	ẵ
+Unicode tổ hợp	ặ	ặ
+Unicode tổ hợp	é	é
+Unicode tổ hợp	è	è
+Unicode tổ hợp	ẻ	ẻ
+Unicode tổ hợp	ẽ	ẽ
+Unicode tổ hợp	ẹ	ẹ
+Unicode tổ hợp	ế	ế
+Unicode tổ hợp	ề	ề
+Unicode tổ hợp	ể	ể
+Unicode tổ hợp	ễ	ễ
+Unicode tổ hợp	ệ	ệ
+Unicode tổ hợp	í	í
+Unicode tổ hợp	ì	ì
+Unicode tổ hợp	ỉ	ỉ
+Unicode tổ hợp	ĩ	ĩ
+Unicode tổ hợp	ị	ị
+Unicode tổ hợp	ó	ó
+Unicode tổ hợp	ò	ò
+Unicode tổ hợp	ỏ	ỏ
+Unicode tổ hợp	õ	õ
+Unicode tổ hợp	ọ	ọ
+Unicode tổ hợp	ố	ố
+Unicode tổ hợp	ồ	ồ
+Unicode tổ hợp	ổ	ổ
+Unicode tổ hợp	ỗ	ỗ
+Unicode tổ hợp	ộ	ộ
+Unicode tổ hợp	ớ	ớ
+Unicode tổ hợp	ờ	ờ
+Unicode tổ hợp	ở	ở
+Unicode tổ hợp	ỡ	ỡ
+Unicode tổ hợp	ợ	ợ
+Unicode tổ hợp	ú	ú
+Unicode tổ hợp	ù	ù
+Unicode tổ hợp	ủ	ủ
+Unicode tổ hợp	ũ	ũ
+Unicode tổ hợp	ụ	ụ
+Unicode tổ hợp	ứ	ứ
+Unicode tổ hợp	ừ	ừ
+Unicode tổ hợp	ử	ử
+Unicode tổ hợp	ữ	ữ
+Unicode tổ hợp	ự	ự
+Unicode tổ hợp	ý	ý
+Unicode tổ hợp	ỳ	ỳ
+Unicode tổ hợp	ỷ	ỷ
+Unicode tổ hợp	ỹ	ỹ
+Unicode tổ hợp	ỵ	ỵ
+Unicode tổ hợp	Đ	Đ
+Unicode tổ hợp	Â	Â
+Unicode tổ hợp	Ă	Ă
+Unicode tổ hợp	Ê	Ê
+Unicode tổ hợp	Ô	Ô
+Unicode tổ hợp	Ơ	Ơ
+Unicode tổ hợp	Ư	Ư
+Unicode tổ hợp	Á	Á
+Unicode tổ hợp	À	À
+Unicode tổ hợp	Ả	Ả
+Unicode tổ hợp	Ã	Ã
+Unicode tổ hợp	Ạ	Ạ
+Unicode tổ hợp	Ấ	Ấ
+Unicode tổ hợp	Ầ	Ầ
+Unicode tổ hợp	Ẩ	Ẩ
+Unicode tổ hợp	Ẫ	Ẫ
+Unicode tổ hợp	Ậ	Ậ
+Unicode tổ hợp	Ắ	Ắ
+Unicode tổ hợp	Ằ	Ằ
+Unicode tổ hợp	Ẳ	Ẳ
+Unicode tổ hợp	Ẵ	Ẵ
+Unicode tổ hợp	Ặ	Ặ
+Unicode tổ hợp	É	É
+Unicode tổ hợp	È	È
+Unicode tổ hợp	Ẻ	Ẻ
+Unicode tổ hợp	Ẽ	Ẽ
+Unicode tổ hợp	Ẹ	Ẹ
+Unicode tổ hợp	Ế	Ế
+Unicode tổ hợp	Ề	Ề
+Unicode tổ hợp	Ể	Ể
+Unicode tổ hợp	Ễ	Ễ
+Unicode tổ hợp	Ệ	Ệ
+Unicode tổ hợp	Í	Í
+Unicode tổ hợp	Ì	Ì
+Unicode tổ hợp	Ỉ	Ỉ
+Unicode tổ hợp	Ĩ	Ĩ
+Unicode tổ hợp	Ị	Ị
+Unicode tổ hợp	Ó	Ó
+Unicode tổ hợp	Ò	Ò
+Unicode tổ hợp	Ỏ	Ỏ
+Unicode tổ hợp	Õ	Õ
+Unicode tổ hợp	Ọ	Ọ
+Unicode tổ hợp	Ố	Ố
+Unicode tổ hợp	Ồ	Ồ
+Unicode tổ hợp	Ổ	Ổ
+Unicode tổ hợp	Ỗ	Ỗ
+Unicode tổ hợp	Ộ	Ộ
+Unicode tổ hợp	Ớ	Ớ
+Unicode tổ hợp	Ờ	Ờ
+Unicode tổ hợp	Ở	Ở
+Unicode tổ hợp	Ỡ	Ỡ
+Unicode tổ hợp	Ợ	Ợ
+Unicode tổ hợp	Ú	Ú
+Unicode tổ hợp	Ù	Ù
+Unicode tổ hợp	Ủ	Ủ
+Unicode tổ hợp	Ũ	Ũ
+Unicode tổ hợp	Ụ	Ụ
+Unicode tổ hợp	Ứ	Ứ
+Unicode tổ hợp	Ừ	Ừ
+Unicode tổ hợp	Ử	Ử
+Unicode tổ hợp	Ữ	Ữ
+Unicode tổ hợp	Ự	Ự
+Unicode tổ hợp	Ý	Ý
+Unicode tổ hợp	Ỳ	Ỳ
+Unicode tổ hợp	Ỷ	Ỷ
+Unicode tổ hợp	Ỹ	Ỹ
+Unicode tổ hợp	Ỵ	Ỵ
+Windows 1258 codepage	đ	ð
+Windows 1258 codepage	â	â
+Windows 1258 codepage	ă	ã
+Windows 1258 codepage	ê	ê
+Windows 1258 codepage	ô	ô
+Windows 1258 codepage	ơ	õ
+Windows 1258 codepage	ư	ý
+Windows 1258 codepage	á	aì
+Windows 1258 codepage	à	aÌ
+Windows 1258 codepage	ả	aÒ
+Windows 1258 codepage	ã	aÞ
+Windows 1258 codepage	ạ	aò
+Windows 1258 codepage	ấ	âì
+Windows 1258 codepage	ầ	âÌ
+Windows 1258 codepage	ẩ	âÒ
+Windows 1258 codepage	ẫ	âÞ
+Windows 1258 codepage	ậ	âò
+Windows 1258 codepage	ắ	ãì
+Windows 1258 codepage	ằ	ãÌ
+Windows 1258 codepage	ẳ	ãÒ
+Windows 1258 codepage	ẵ	ãÞ
+Windows 1258 codepage	ặ	ãò
+Windows 1258 codepage	é	eì
+Windows 1258 codepage	è	eÌ
+Windows 1258 codepage	ẻ	eÒ
+Windows 1258 codepage	ẽ	eÞ
+Windows 1258 codepage	ẹ	eò
+Windows 1258 codepage	ế	êì
+Windows 1258 codepage	ề	êÌ
+Windows 1258 codepage	ể	êÒ
+Windows 1258 codepage	ễ	êÞ
+Windows 1258 codepage	ệ	êò
+Windows 1258 codepage	í	iì
+Windows 1258 codepage	ì	iÌ
+Windows 1258 codepage	ỉ	iÒ
+Windows 1258 codepage	ĩ	iÞ
+Windows 1258 codepage	ị	iò
+Windows 1258 codepage	ó	oì
+Windows 1258 codepage	ò	oÌ
+Windows 1258 codepage	ỏ	oÒ
+Windows 1258 codepage	õ	oÞ
+Windows 1258 codepage	ọ	oò
+Windows 1258 codepage	ố	ôì
+Windows 1258 codepage	ồ	ôÌ
+Windows 1258 codepage	ổ	ôÒ
+Windows 1258 codepage	ỗ	ôÞ
+Windows 1258 codepage	ộ	ôò
+Windows 1258 codepage	ớ	õì
+Windows 1258 codepage	ờ	õÌ
+Windows 1258 codepage	ở	õÒ
+Windows 1258 codepage	ỡ	õÞ
+Windows 1258 codepage	ợ	õò
+Windows 1258 codepage	ú	uì
+Windows 1258 codepage	ù	uÌ
+Windows 1258 codepage	ủ	uÒ
+Windows 1258 codepage	ũ	uÞ
+Windows 1258 codepage	ụ	uò
+Windows 1258 codepage	ứ	ýì
+Windows 1258 codepage	ừ	ýÌ
+Windows 1258 codepage	ử	ýÒ
+Windows 1258 codepage	ữ	ýÞ
+Windows 1258 codepage	ự	ýò
+Windows 1258 codepage	ý	yì
+Windows 1258 codepage	ỳ	yÌ
+Windows 1258 codepage	ỷ	yÒ
+Windows 1258 codepage	ỹ	yÞ
+Windows 1258 codepage	ỵ	yò
+Windows 1258 codepage	Đ	Đ
+Windows 1258 codepage	Â	Â
+Windows 1258 codepage	Ă	Ã
+Windows 1258 codepage	Ê	Ê
+Windows 1258 codepage	Ô	Ô
+Windows 1258 codepage	Ơ	Õ
+Windows 1258 codepage	Ư	Ý
+Windows 1258 codepage	Á	Aì
+Windows 1258 codepage	À	AÌ
+Windows 1258 codepage	Ả	AÒ
+Windows 1258 codepage	Ã	AÞ
+Windows 1258 codepage	Ạ	Aò
+Windows 1258 codepage	Ấ	Âì
+Windows 1258 codepage	Ầ	ÂÌ
+Windows 1258 codepage	Ẩ	ÂÒ
+Windows 1258 codepage	Ẫ	ÂÞ
+Windows 1258 codepage	Ậ	Âò
+Windows 1258 codepage	Ắ	Ãì
+Windows 1258 codepage	Ằ	ÃÌ
+Windows 1258 codepage	Ẳ	ÃÒ
+Windows 1258 codepage	Ẵ	ÃÞ
+Windows 1258 codepage	Ặ	Ãò
+Windows 1258 codepage	É	Eì
+Windows 1258 codepage	È	EÌ
+Windows 1258 codepage	Ẻ	EÒ
+Windows 1258 codepage	Ẽ	EÞ
+Windows 1258 codepage	Ẹ	Eò
+Windows 1258 codepage	Ế	Êì
+Windows 1258 codepage	Ề	ÊÌ
+Windows 1258 codepage	Ể	ÊÒ
+Windows 1258 codepage	Ễ	ÊÞ
+Windows 1258 codepage	Ệ	Êò
+Windows 1258 codepage	Í	Iì
+Windows 1258 codepage	Ì	IÌ
+Windows 1258 codepage	Ỉ	IÒ
+Windows 1258 codepage	Ĩ	IÞ
+Windows 1258 codepage	Ị	Iò
+Windows 1258 codepage	Ó	Oì
+Windows 1258 codepage	Ò	OÌ
+Windows 1258 codepage	Ỏ	OÒ
+Windows 1258 codepage	Õ	OÞ
+Windows 1258 codepage	Ọ	Oò
+Windows 1258 codepage	Ố	Ôì
+Windows 1258 codepage	Ồ	ÔÌ
+Windows 1258 codepage	Ổ	ÔÒ
+Windows 1258 codepage	Ỗ	ÔÞ
+Windows 1258 codepage	Ộ	Ôò
+Windows 1258 codepage	Ớ	Õì
+Windows 1258 codepage	Ờ	ÕÌ
+Windows 1258 codepage	Ở	ÕÒ
+Windows 1258 codepage	Ỡ	ÕÞ
+Windows 1258 codepage	Ợ	Õò
+Windows 1258 codepage	Ú	Uì
+Windows 1258 codepage	Ù	UÌ
+Windows 1258 codepage	Ủ	UÒ
+Windows 1258 codepage	Ũ	UÞ
+Windows 1258 codepage	Ụ	Uò
+Windows 1258 codepage	Ứ	=Ýì
+Windows 1258 codepage	Ừ	ÝÌ
+Windows 1258 codepage	Ử	ÝÒ
+Windows 1258 codepage	Ữ	ÝÞ
+Windows 1258 codepage	Ự	Ýò
+Windows 1258 codepage	Ý	Yì
+Windows 1258 codepage	Ỳ	YÌ
+Windows 1258 codepage	Ỷ	YÒ
+Windows 1258 codepage	Ỹ	YÞ
+Windows 1258 codepage	Ỵ	Yò
+VIQR	đ	dd
+VIQR	â	a^
+VIQR	ă	a(
+VIQR	ê	e^
+VIQR	ô	o^
+VIQR	ơ	o+
+VIQR	ư	u+
+VIQR	á	a'
+VIQR	à	a`
+VIQR	ả	a?
+VIQR	ã	a~
+VIQR	ạ	a.
+VIQR	ấ	a^'
+VIQR	ầ	a^`
+VIQR	ẩ	a^?
+VIQR	ẫ	a^~
+VIQR	ậ	a^.
+VIQR	ắ	a('
+VIQR	ằ	a(`
+VIQR	ẳ	a(?
+VIQR	ẵ	a(~
+VIQR	ặ	a(.
+VIQR	é	e'
+VIQR	è	e`
+VIQR	ẻ	e?
+VIQR	ẽ	e~
+VIQR	ẹ	e.
+VIQR	ế	e^'
+VIQR	ề	e^`
+VIQR	ể	e^?
+VIQR	ễ	e^~
+VIQR	ệ	e^.
+VIQR	í	i'
+VIQR	ì	i`
+VIQR	ỉ	i?
+VIQR	ĩ	i~
+VIQR	ị	i.
+VIQR	ó	o'
+VIQR	ò	o`
+VIQR	ỏ	o?
+VIQR	õ	o~
+VIQR	ọ	o.
+VIQR	ố	o^'
+VIQR	ồ	o^`
+VIQR	ổ	o^?
+VIQR	ỗ	o^~
+VIQR	ộ	o^.
+VIQR	ớ	o+'
+VIQR	ờ	o+`
+VIQR	ở	o+?
+VIQR	ỡ	o+~
+VIQR	ợ	o+.
+VIQR	ú	u'
+VIQR	ù	u`
+VIQR	ủ	u?
+VIQR	ũ	u~
+VIQR	ụ	u.
+VIQR	ứ	u+'
+VIQR	ừ	u+`
+VIQR	ử	u+?
+VIQR	ữ	u+~
+VIQR	ự	u+.
+VIQR	ý	y'
+VIQR	ỳ	y`
+VIQR	ỷ	y?
+VIQR	ỹ	y~
+VIQR	ỵ	y.
+VIQR	Đ	DD
+VIQR	Â	A^
+VIQR	Ă	A(
+VIQR	Ê	E^
+VIQR	Ô	O^
+VIQR	Ơ	O+
+VIQR	Ư	U+
+VIQR	Á	A'
+VIQR	À	A`
+VIQR	Ả	A?
+VIQR	Ã	A~
+VIQR	Ạ	A.
+VIQR	Ấ	A^'
+VIQR	Ầ	A^`
+VIQR	Ẩ	A^?
+VIQR	Ẫ	A^~
+VIQR	Ậ	A^.
+VIQR	Ắ	A('
+VIQR	Ằ	A(`
+VIQR	Ẳ	A(?
+VIQR	Ẵ	A(~
+VIQR	Ặ	A(.
+VIQR	É	E'
+VIQR	È	E`
+VIQR	Ẻ	E?
+VIQR	Ẽ	E~
+VIQR	Ẹ	E.
+VIQR	Ế	E^'
+VIQR	Ề	E^`
+VIQR	Ể	E^?
+VIQR	Ễ	E^~
+VIQR	Ệ	E^.
+VIQR	Í	I'
+VIQR	Ì	I`
+VIQR	Ỉ	I?
+VIQR	Ĩ	I~
+VIQR	Ị	I.
+VIQR	Ó	O'
+VIQR	Ò	O`
+VIQR	Ỏ	O?
+VIQR	Õ	O~
+VIQR	Ọ	O.
+VIQR	Ố	O^'
+VIQR	Ồ	O^`
+VIQR	Ổ	O^?
+VIQR	Ỗ	O^~
+VIQR	Ộ	O^.
+VIQR	Ớ	O+'
+VIQR	Ờ	O+`
+VIQR	Ở	O+?
+VIQR	Ỡ	O+~
+VIQR	Ợ	O+.
+VIQR	Ú	U'
+VIQR	Ù	U`
+VIQR	Ủ	U?
+VIQR	Ũ	U~
+VIQR	Ụ	U.
+VIQR	Ứ	U+'
+VIQR	Ừ	U+`
+VIQR	Ử	U+?
+VIQR	Ữ	U+~
+VIQR	Ự	U+.
+VIQR	Ý	Y'
+VIQR	Ỳ	Y`
+VIQR	Ỷ	Y?
+VIQR	Ỹ	Y~
+VIQR	Ỵ	Y.
+VISCII	đ	ð
+VISCII	â	â
+VISCII	ă	å
+VISCII	ê	ê
+VISCII	ô	ô
+VISCII	ơ	½
+VISCII	ư	ß
+VISCII	á	á
+VISCII	à	à
+VISCII	ả	ä
+VISCII	ã	ã
+VISCII	ạ	Õ
+VISCII	ấ	¤
+VISCII	ầ	¥
+VISCII	ẩ	¦
+VISCII	ẫ	ç
+VISCII	ậ	§
+VISCII	ắ	¡
+VISCII	ằ	¢
+VISCII	ẳ	Æ
+VISCII	ẵ	Ç
+VISCII	ặ	£
+VISCII	é	é
+VISCII	è	è
+VISCII	ẻ	ë
+VISCII	ẽ	¨
+VISCII	ẹ	©
+VISCII	ế	ª
+VISCII	ề	«
+VISCII	ể	¬
+VISCII	ễ	\u00AD
+VISCII	ệ	®
+VISCII	í	í
+VISCII	ì	ì
+VISCII	ỉ	ï
+VISCII	ĩ	î
+VISCII	ị	¸
+VISCII	ó	ó
+VISCII	ò	ò
+VISCII	ỏ	ö
+VISCII	õ	õ
+VISCII	ọ	÷
+VISCII	ố	¯
+VISCII	ồ	°
+VISCII	ổ	±
+VISCII	ỗ	²
+VISCII	ộ	µ
+VISCII	ớ	¾
+VISCII	ờ	¶
+VISCII	ở	·
+VISCII	ỡ	Þ
+VISCII	ợ	þ
+VISCII	ú	ú
+VISCII	ù	ù
+VISCII	ủ	ü
+VISCII	ũ	û
+VISCII	ụ	ø
+VISCII	ứ	Ñ
+VISCII	ừ	×
+VISCII	ử	Ø
+VISCII	ữ	æ
+VISCII	ự	ñ
+VISCII	ý	ý
+VISCII	ỳ	Ï
+VISCII	ỷ	Ö
+VISCII	ỹ	Û
+VISCII	ỵ	Ü
+VISCII	Đ	Ð
+VISCII	Â	Â
+VISCII	Ă	Å
+VISCII	Ê	Ê
+VISCII	Ô	Ô
+VISCII	Ơ	´
+VISCII	Ư	¿
+VISCII	Á	Á
+VISCII	À	À
+VISCII	Ả	Ä
+VISCII	Ã	Ã
+VISCII	Ạ	€
+VISCII	Ấ	„
+VISCII	Ầ	…
+VISCII	Ẩ	†
+VISCII	Ẫ	ç
+VISCII	Ậ	‡
+VISCII	Ắ	
+VISCII	Ằ	‚
+VISCII	Ẳ	Æ
+VISCII	Ẵ	Ç
+VISCII	Ặ	ƒ
+VISCII	É	É
+VISCII	È	È
+VISCII	Ẻ	Ë
+VISCII	Ẽ	ˆ
+VISCII	Ẹ	‰
+VISCII	Ế	Š
+VISCII	Ề	‹
+VISCII	Ể	Œ
+VISCII	Ễ	
+VISCII	Ệ	Ž
+VISCII	Í	Í
+VISCII	Ì	Ì
+VISCII	Ỉ	›
+VISCII	Ĩ	Î
+VISCII	Ị	˜
+VISCII	Ó	Ó
+VISCII	Ò	Ò
+VISCII	Ỏ	™
+VISCII	Õ	õ
+VISCII	Ọ	š
+VISCII	Ố	
+VISCII	Ồ	
+VISCII	Ổ	‘
+VISCII	Ỗ	’
+VISCII	Ộ	“
+VISCII	Ớ	•
+VISCII	Ờ	–
+VISCII	Ở	—
+VISCII	Ỡ	³
+VISCII	Ợ	”
+VISCII	Ú	Ú
+VISCII	Ù	Ù
+VISCII	Ủ	œ
+VISCII	Ũ	
+VISCII	Ụ	ž
+VISCII	Ứ	º
+VISCII	Ừ	»
+VISCII	Ử	¼
+VISCII	Ữ	ÿ
+VISCII	Ự	¹
+VISCII	Ý	Ý
+VISCII	Ỳ	Ÿ
+VISCII	Ỷ	Ö
+VISCII	Ỹ	Û
+VISCII	Ỵ	Ü
+VPS	đ	Ç
+VPS	â	â
+VPS	ă	æ
+VPS	ê	ê
+VPS	ô	ô
+VPS	ơ	Ö
+VPS	ư	Ü
+VPS	á	á
+VPS	à	à
+VPS	ả	ä
+VPS	ã	ã
+VPS	ạ	å
+VPS	ấ	Ã
+VPS	ầ	À
+VPS	ẩ	Ä
+VPS	ẫ	Å
+VPS	ậ	Æ
+VPS	ắ	¡
+VPS	ằ	¢
+VPS	ẳ	£
+VPS	ẵ	¤
+VPS	ặ	¥
+VPS	é	é
+VPS	è	è
+VPS	ẻ	È
+VPS	ẽ	ë
+VPS	ẹ	Ë
+VPS	ế	‰
+VPS	ề	Š
+VPS	ể	‹
+VPS	ễ	Í
+VPS	ệ	Œ
+VPS	í	í
+VPS	ì	ì
+VPS	ỉ	Ì
+VPS	ĩ	ï
+VPS	ị	Î
+VPS	ó	ó
+VPS	ò	ò
+VPS	ỏ	Õ
+VPS	õ	õ
+VPS	ọ	†
+VPS	ố	Ó
+VPS	ồ	Ò
+VPS	ổ	°
+VPS	ỗ	‡
+VPS	ộ	¶
+VPS	ớ	§
+VPS	ờ	©
+VPS	ở	ª
+VPS	ỡ	«
+VPS	ợ	®
+VPS	ú	ú
+VPS	ù	ù
+VPS	ủ	û
+VPS	ũ	Û
+VPS	ụ	ø
+VPS	ứ	Ù
+VPS	ừ	Ø
+VPS	ử	º
+VPS	ữ	»
+VPS	ự	¿
+VPS	ý	š
+VPS	ỳ	ÿ
+VPS	ỷ	›
+VPS	ỹ	Ï
+VPS	ỵ	œ
+VPS	Đ	ñ
+VPS	Â	Â
+VPS	Ă	ˆ
+VPS	Ê	Ê
+VPS	Ô	Ô
+VPS	Ơ	÷
+VPS	Ư	Ð
+VPS	Á	Á
+VPS	À	€
+VPS	Ả	
+VPS	Ã	‚
+VPS	Ạ	å
+VPS	Ấ	ƒ
+VPS	Ầ	„
+VPS	Ẩ	…
+VPS	Ẫ	Å
+VPS	Ậ	Æ
+VPS	Ắ	
+VPS	Ằ	Ž
+VPS	Ẳ	
+VPS	Ẵ	ð
+VPS	Ặ	¥
+VPS	É	É
+VPS	È	×
+VPS	Ẻ	Þ
+VPS	Ẽ	þ
+VPS	Ẹ	Ë
+VPS	Ế	
+VPS	Ề	“
+VPS	Ể	”
+VPS	Ễ	•
+VPS	Ệ	Œ
+VPS	Í	´
+VPS	Ì	µ
+VPS	Ỉ	·
+VPS	Ĩ	¸
+VPS	Ị	Î
+VPS	Ó	¹
+VPS	Ò	¼
+VPS	Ỏ	½
+VPS	Õ	¾
+VPS	Ọ	†
+VPS	Ố	–
+VPS	Ồ	—
+VPS	Ổ	˜
+VPS	Ỗ	™
+VPS	Ộ	¶
+VPS	Ớ	
+VPS	Ờ	ž
+VPS	Ở	Ÿ
+VPS	Ỡ	¦
+VPS	Ợ	®
+VPS	Ú	Ú
+VPS	Ù	¨
+VPS	Ủ	Ñ
+VPS	Ũ	¬
+VPS	Ụ	ø
+VPS	Ứ	\u00AD
+VPS	Ừ	¯
+VPS	Ử	±
+VPS	Ữ	»
+VPS	Ự	¿
+VPS	Ý	Ý
+VPS	Ỳ	²
+VPS	Ỷ	ý
+VPS	Ỹ	³
+VPS	Ỵ	œ
+BKHCM 2	đ	à
+BKHCM 2	â	ê
+BKHCM 2	ă	ù
+BKHCM 2	ê	ï
+BKHCM 2	ô	ö
+BKHCM 2	ơ	ú
+BKHCM 2	ư	û
+BKHCM 2	á	aá
+BKHCM 2	à	aâ
+BKHCM 2	ả	aã
+BKHCM 2	ã	aä
+BKHCM 2	ạ	aå
+BKHCM 2	ấ	êë
+BKHCM 2	ầ	êì
+BKHCM 2	ẩ	êí
+BKHCM 2	ẫ	êî
+BKHCM 2	ậ	êå
+BKHCM 2	ắ	ùæ
+BKHCM 2	ằ	ùç
+BKHCM 2	ẳ	ùè
+BKHCM 2	ẵ	ùé
+BKHCM 2	ặ	ùå
+BKHCM 2	é	eá
+BKHCM 2	è	eâ
+BKHCM 2	ẻ	eã
+BKHCM 2	ẽ	eä
+BKHCM 2	ẹ	eå
+BKHCM 2	ế	ïë
+BKHCM 2	ề	ïì
+BKHCM 2	ể	ïí
+BKHCM 2	ễ	ïî
+BKHCM 2	ệ	ïå
+BKHCM 2	í	ñ
+BKHCM 2	ì	ò
+BKHCM 2	ỉ	ó
+BKHCM 2	ĩ	ô
+BKHCM 2	ị	õ
+BKHCM 2	ó	oá
+BKHCM 2	ò	oâ
+BKHCM 2	ỏ	oã
+BKHCM 2	õ	oä
+BKHCM 2	ọ	oå
+BKHCM 2	ố	öë
+BKHCM 2	ồ	öì
+BKHCM 2	ổ	öí
+BKHCM 2	ỗ	öî
+BKHCM 2	ộ	öå
+BKHCM 2	ớ	úá
+BKHCM 2	ờ	úâ
+BKHCM 2	ở	úã
+BKHCM 2	ỡ	úä
+BKHCM 2	ợ	úå
+BKHCM 2	ú	uá
+BKHCM 2	ù	uâ
+BKHCM 2	ủ	uã
+BKHCM 2	ũ	uä
+BKHCM 2	ụ	uå
+BKHCM 2	ứ	ûá
+BKHCM 2	ừ	ûâ
+BKHCM 2	ử	ûã
+BKHCM 2	ữ	ûä
+BKHCM 2	ự	ûå
+BKHCM 2	ý	yá
+BKHCM 2	ỳ	yâ
+BKHCM 2	ỷ	yã
+BKHCM 2	ỹ	yä
+BKHCM 2	ỵ	yå
+BKHCM 2	Đ	À
+BKHCM 2	Â	Ê
+BKHCM 2	Ă	Ù
+BKHCM 2	Ê	Ï
+BKHCM 2	Ô	Ö
+BKHCM 2	Ơ	Ú
+BKHCM 2	Ư	Û
+BKHCM 2	Á	AÁ
+BKHCM 2	À	AÂ
+BKHCM 2	Ả	AÃ
+BKHCM 2	Ã	AÄ
+BKHCM 2	Ạ	AÅ
+BKHCM 2	Ấ	ÊË
+BKHCM 2	Ầ	ÊÌ
+BKHCM 2	Ẩ	ÊÍ
+BKHCM 2	Ẫ	ÊÎ
+BKHCM 2	Ậ	ÊÅ
+BKHCM 2	Ắ	ÙÆ
+BKHCM 2	Ằ	ÙÇ
+BKHCM 2	Ẳ	ÙÈ
+BKHCM 2	Ẵ	ÙÉ
+BKHCM 2	Ặ	ÙÅ
+BKHCM 2	É	EÁ
+BKHCM 2	È	EÂ
+BKHCM 2	Ẻ	EÃ
+BKHCM 2	Ẽ	EÄ
+BKHCM 2	Ẹ	EÅ
+BKHCM 2	Ế	ÏË
+BKHCM 2	Ề	ÏÌ
+BKHCM 2	Ể	ÏÍ
+BKHCM 2	Ễ	ÏÎ
+BKHCM 2	Ệ	Ïå
+BKHCM 2	Í	Ñ
+BKHCM 2	Ì	Ò
+BKHCM 2	Ỉ	Ó
+BKHCM 2	Ĩ	Ô
+BKHCM 2	Ị	Õ
+BKHCM 2	Ó	OÁ
+BKHCM 2	Ò	OÂ
+BKHCM 2	Ỏ	OÃ
+BKHCM 2	Õ	OÄ
+BKHCM 2	Ọ	OÅ
+BKHCM 2	Ố	ÖË
+BKHCM 2	Ồ	ÖÌ
+BKHCM 2	Ổ	ÖÍ
+BKHCM 2	Ỗ	ÖÎ
+BKHCM 2	Ộ	ÖÅ
+BKHCM 2	Ớ	ÚÁ
+BKHCM 2	Ờ	ÚÂ
+BKHCM 2	Ở	ÚÃ
+BKHCM 2	Ỡ	ÚÄ
+BKHCM 2	Ợ	ÚÅ
+BKHCM 2	Ú	UÁ
+BKHCM 2	Ù	UÂ
+BKHCM 2	Ủ	UÃ
+BKHCM 2	Ũ	UÄ
+BKHCM 2	Ụ	UÅ
+BKHCM 2	Ứ	ÛÁ
+BKHCM 2	Ừ	ÛÂ
+BKHCM 2	Ử	ÛÃ
+BKHCM 2	Ữ	ÛÄ
+BKHCM 2	Ự	ÛÅ
+BKHCM 2	Ý	YÁ
+BKHCM 2	Ỳ	YÂ
+BKHCM 2	Ỷ	YÃ
+BKHCM 2	Ỹ	YÄ
+BKHCM 2	Ỵ	YÅ
+BKHCM 1	đ	½
+BKHCM 1	â	Ý
+BKHCM 1	ă	×
+BKHCM 1	ê	ã
+BKHCM 1	ô	é
+BKHCM 1	ơ	ï
+BKHCM 1	ư	õ
+BKHCM 1	á	¾
+BKHCM 1	à	¿
+BKHCM 1	ả	À
+BKHCM 1	ã	Á
+BKHCM 1	ạ	Â
+BKHCM 1	ấ	Þ
+BKHCM 1	ầ	ß
+BKHCM 1	ẩ	à
+BKHCM 1	ẫ	á
+BKHCM 1	ậ	â
+BKHCM 1	ắ	Ø
+BKHCM 1	ằ	Ù
+BKHCM 1	ẳ	Ú
+BKHCM 1	ẵ	Û
+BKHCM 1	ặ	Ü
+BKHCM 1	é	Ã
+BKHCM 1	è	Ä
+BKHCM 1	ẻ	Å
+BKHCM 1	ẽ	Æ
+BKHCM 1	ẹ	Ç
+BKHCM 1	ế	ä
+BKHCM 1	ề	å
+BKHCM 1	ể	æ
+BKHCM 1	ễ	ç
+BKHCM 1	ệ	è
+BKHCM 1	í	È
+BKHCM 1	ì	É
+BKHCM 1	ỉ	Ê
+BKHCM 1	ĩ	Ë
+BKHCM 1	ị	Ì
+BKHCM 1	ó	Í
+BKHCM 1	ò	Î
+BKHCM 1	ỏ	Ï
+BKHCM 1	õ	Ð
+BKHCM 1	ọ	Ñ
+BKHCM 1	ố	ê
+BKHCM 1	ồ	ë
+BKHCM 1	ổ	ì
+BKHCM 1	ỗ	í
+BKHCM 1	ộ	î
+BKHCM 1	ớ	ð
+BKHCM 1	ờ	ñ
+BKHCM 1	ở	ò
+BKHCM 1	ỡ	ó
+BKHCM 1	ợ	ô
+BKHCM 1	ú	Ò
+BKHCM 1	ù	Ó
+BKHCM 1	ủ	Ô
+BKHCM 1	ũ	Õ
+BKHCM 1	ụ	Ö
+BKHCM 1	ứ	ö
+BKHCM 1	ừ	÷
+BKHCM 1	ử	ø
+BKHCM 1	ữ	ù
+BKHCM 1	ự	ú
+BKHCM 1	ý	û
+BKHCM 1	ỳ	ü
+BKHCM 1	ỷ	ý
+BKHCM 1	ỹ	þ
+BKHCM 1	ỵ	ÿ
+BKHCM 1	Đ	}
+BKHCM 1	Â	Ÿ
+BKHCM 1	Ă	™
+BKHCM 1	Ê	¥
+BKHCM 1	Ô	«
+BKHCM 1	Ơ	±
+BKHCM 1	Ư	·
+BKHCM 1	Á	€
+BKHCM 1	À	
+BKHCM 1	Ả	‚
+BKHCM 1	Ã	ƒ
+BKHCM 1	Ạ	„
+BKHCM 1	Ấ	~
+BKHCM 1	Ầ	¡
+BKHCM 1	Ẩ	¢
+BKHCM 1	Ẫ	£
+BKHCM 1	Ậ	¤
+BKHCM 1	Ắ	š
+BKHCM 1	Ằ	›
+BKHCM 1	Ẳ	œ
+BKHCM 1	Ẵ	
+BKHCM 1	Ặ	˜
+BKHCM 1	É	…
+BKHCM 1	È	†
+BKHCM 1	Ẻ	‡
+BKHCM 1	Ẽ	ˆ
+BKHCM 1	Ẹ	‰
+BKHCM 1	Ế	¦
+BKHCM 1	Ề	§
+BKHCM 1	Ể	¨
+BKHCM 1	Ễ	©
+BKHCM 1	Ệ	ª
+BKHCM 1	Í	Š
+BKHCM 1	Ì	‹
+BKHCM 1	Ỉ	Œ
+BKHCM 1	Ĩ	
+BKHCM 1	Ị	Ž
+BKHCM 1	Ó	
+BKHCM 1	Ò	
+BKHCM 1	Ỏ	‘
+BKHCM 1	Õ	’
+BKHCM 1	Ọ	“
+BKHCM 1	Ố	¬
+BKHCM 1	Ồ	\u00AD
+BKHCM 1	Ổ	®
+BKHCM 1	Ỗ	¯
+BKHCM 1	Ộ	°
+BKHCM 1	Ớ	²
+BKHCM 1	Ờ	³
+BKHCM 1	Ở	´
+BKHCM 1	Ỡ	µ
+BKHCM 1	Ợ	¶
+BKHCM 1	Ú	”
+BKHCM 1	Ù	•
+BKHCM 1	Ủ	–
+BKHCM 1	Ũ	—
+BKHCM 1	Ụ	˜
+BKHCM 1	Ứ	¸
+BKHCM 1	Ừ	¹
+BKHCM 1	Ử	º
+BKHCM 1	Ữ	»
+BKHCM 1	Ự	¼
+BKHCM 1	Ý	{
+BKHCM 1	Ỳ	^
+BKHCM 1	Ỷ	`
+BKHCM 1	Ỹ	|
+BKHCM 1	Ỵ	Ž
+Vietware X	đ	â
+Vietware X	â	á
+Vietware X	ă	à
+Vietware X	ê	ã
+Vietware X	ô	ä
+Vietware X	ơ	å
+Vietware X	ư	æ
+Vietware X	á	aï
+Vietware X	à	aì
+Vietware X	ả	aí
+Vietware X	ã	aî
+Vietware X	ạ	aû
+Vietware X	ấ	áú
+Vietware X	ầ	áö
+Vietware X	ẩ	áø
+Vietware X	ẫ	áù
+Vietware X	ậ	áû
+Vietware X	ắ	àõ
+Vietware X	ằ	àò
+Vietware X	ẳ	àó
+Vietware X	ẵ	àô
+Vietware X	ặ	àû
+Vietware X	é	eï
+Vietware X	è	eì
+Vietware X	ẻ	eí
+Vietware X	ẽ	eî
+Vietware X	ẹ	eû
+Vietware X	ế	ãú
+Vietware X	ề	ãö
+Vietware X	ể	ãø
+Vietware X	ễ	ãù
+Vietware X	ệ	ãû
+Vietware X	í	ê
+Vietware X	ì	ç
+Vietware X	ỉ	è
+Vietware X	ĩ	é
+Vietware X	ị	ë
+Vietware X	ó	oï
+Vietware X	ò	oì
+Vietware X	ỏ	oí
+Vietware X	õ	oî
+Vietware X	ọ	oü
+Vietware X	ố	äú
+Vietware X	ồ	äö
+Vietware X	ổ	äø
+Vietware X	ỗ	äù
+Vietware X	ộ	äü
+Vietware X	ớ	åï
+Vietware X	ờ	åì
+Vietware X	ở	åí
+Vietware X	ỡ	åî
+Vietware X	ợ	åü
+Vietware X	ú	uï
+Vietware X	ù	uì
+Vietware X	ủ	uí
+Vietware X	ũ	uî
+Vietware X	ụ	uû
+Vietware X	ứ	æï
+Vietware X	ừ	æì
+Vietware X	ử	æí
+Vietware X	ữ	æî
+Vietware X	ự	æû
+Vietware X	ý	yï
+Vietware X	ỳ	yì
+Vietware X	ỷ	yí
+Vietware X	ỹ	yî
+Vietware X	ỵ	yñ
+Vietware X	Đ	Â
+Vietware X	Â	Á
+Vietware X	Ă	À
+Vietware X	Ê	Ã
+Vietware X	Ô	Ä
+Vietware X	Ơ	Å
+Vietware X	Ư	Æ
+Vietware X	Á	AÏ
+Vietware X	À	AÌ
+Vietware X	Ả	AÍ
+Vietware X	Ã	AÎ
+Vietware X	Ạ	AÛ
+Vietware X	Ấ	ÁÚ
+Vietware X	Ầ	ÁÖ
+Vietware X	Ẩ	ÁØ
+Vietware X	Ẫ	ÁÙ
+Vietware X	Ậ	ÁÛ
+Vietware X	Ắ	ÀÕ
+Vietware X	Ằ	ÀÒ
+Vietware X	Ẳ	ÀÓ
+Vietware X	Ẵ	ÀÔ
+Vietware X	Ặ	ÀÛ
+Vietware X	É	EÏ
+Vietware X	È	EÌ
+Vietware X	Ẻ	EÍ
+Vietware X	Ẽ	EÎ
+Vietware X	Ẹ	EÛ
+Vietware X	Ế	ÃÚ
+Vietware X	Ề	ÃÖ
+Vietware X	Ể	ÃØ
+Vietware X	Ễ	ÃÙ
+Vietware X	Ệ	ÃÛ
+Vietware X	Í	Ê
+Vietware X	Ì	Ç
+Vietware X	Ỉ	È
+Vietware X	Ĩ	É
+Vietware X	Ị	Ë
+Vietware X	Ó	OÏ
+Vietware X	Ò	OÌ
+Vietware X	Ỏ	OÍ
+Vietware X	Õ	OÎ
+Vietware X	Ọ	OÜ
+Vietware X	Ố	ÄÚ
+Vietware X	Ồ	ÄÖ
+Vietware X	Ổ	ÄØ
+Vietware X	Ỗ	ÄÙ
+Vietware X	Ộ	ÄÜ
+Vietware X	Ớ	ÅÏ
+Vietware X	Ờ	ÅÌ
+Vietware X	Ở	ÅÍ
+Vietware X	Ỡ	ÅÎ
+Vietware X	Ợ	ÅÜ
+Vietware X	Ú	UÏ
+Vietware X	Ù	UÌ
+Vietware X	Ủ	UÍ
+Vietware X	Ũ	UÎ
+Vietware X	Ụ	UÛ
+Vietware X	Ứ	ÆÏ
+Vietware X	Ừ	ÆÌ
+Vietware X	Ử	ÆÍ
+Vietware X	Ữ	ÆÎ
+Vietware X	Ự	ÆÛ
+Vietware X	Ý	YÏ
+Vietware X	Ỳ	YÌ
+Vietware X	Ỷ	YÍ
+Vietware X	Ỹ	YÎ
+Vietware X	Ỵ	YÑ
+Vietware Full	đ	¢
+Vietware Full	â	¡
+Vietware Full	ă	Ÿ
+Vietware Full	ê	£
+Vietware Full	ô	¤
+Vietware Full	ơ	¥
+Vietware Full	ư	§
+Vietware Full	á	À
+Vietware Full	à	ª
+Vietware Full	ả	¶
+Vietware Full	ã	º
+Vietware Full	ạ	Á
+Vietware Full	ấ	Ê
+Vietware Full	ầ	Ç
+Vietware Full	ẩ	È
+Vietware Full	ẫ	É
+Vietware Full	ậ	Ë
+Vietware Full	ắ	Å
+Vietware Full	ằ	Â
+Vietware Full	ẳ	Ã
+Vietware Full	ẵ	Ä
+Vietware Full	ặ	Æ
+Vietware Full	é	Ï
+Vietware Full	è	Ì
+Vietware Full	ẻ	Í
+Vietware Full	ẽ	Î
+Vietware Full	ẹ	Ñ
+Vietware Full	ế	Õ
+Vietware Full	ề	Ò
+Vietware Full	ể	Ó
+Vietware Full	ễ	Ô
+Vietware Full	ệ	Ö
+Vietware Full	í	Û
+Vietware Full	ì	Ø
+Vietware Full	ỉ	Ù
+Vietware Full	ĩ	Ú
+Vietware Full	ị	Ü
+Vietware Full	ó	â
+Vietware Full	ò	ß
+Vietware Full	ỏ	à
+Vietware Full	õ	á
+Vietware Full	ọ	ã
+Vietware Full	ố	ç
+Vietware Full	ồ	ä
+Vietware Full	ổ	å
+Vietware Full	ỗ	æ
+Vietware Full	ộ	è
+Vietware Full	ớ	ì
+Vietware Full	ờ	é
+Vietware Full	ở	ê
+Vietware Full	ỡ	ë
+Vietware Full	ợ	í
+Vietware Full	ú	ò
+Vietware Full	ù	î
+Vietware Full	ủ	ï
+Vietware Full	ũ	ñ
+Vietware Full	ụ	ó
+Vietware Full	ứ	÷
+Vietware Full	ừ	ô
+Vietware Full	ử	õ
+Vietware Full	ữ	ö
+Vietware Full	ự	ø
+Vietware Full	ý	ü
+Vietware Full	ỳ	ù
+Vietware Full	ỷ	ú
+Vietware Full	ỹ	û
+Vietware Full	ỵ	ÿ
+Vietware Full	Đ	˜
+Vietware Full	Â	—
+Vietware Full	Ă	–
+Vietware Full	Ê	™
+Vietware Full	Ô	š
+Vietware Full	Ơ	›
+Vietware Full	Ư	œ
+Vietware Full	Á	À
+Vietware Full	À	ª
+Vietware Full	Ả	¶
+Vietware Full	Ã	º
+Vietware Full	Ạ	Á
+Vietware Full	Ấ	Ê
+Vietware Full	Ầ	Ç
+Vietware Full	Ẩ	È
+Vietware Full	Ẫ	É
+Vietware Full	Ậ	Ë
+Vietware Full	Ắ	Å
+Vietware Full	Ằ	Â
+Vietware Full	Ẳ	Ã
+Vietware Full	Ẵ	Ä
+Vietware Full	Ặ	Æ
+Vietware Full	É	Ï
+Vietware Full	È	Ì
+Vietware Full	Ẻ	Í
+Vietware Full	Ẽ	Î
+Vietware Full	Ẹ	Ñ
+Vietware Full	Ế	Õ
+Vietware Full	Ề	Ò
+Vietware Full	Ể	Ó
+Vietware Full	Ễ	Ô
+Vietware Full	Ệ	Ö
+Vietware Full	Í	Û
+Vietware Full	Ì	Ø
+Vietware Full	Ỉ	Ù
+Vietware Full	Ĩ	Ú
+Vietware Full	Ị	Ü
+Vietware Full	Ó	â
+Vietware Full	Ò	ß
+Vietware Full	Ỏ	à
+Vietware Full	Õ	á
+Vietware Full	Ọ	ã
+Vietware Full	Ố	ç
+Vietware Full	Ồ	ä
+Vietware Full	Ổ	å
+Vietware Full	Ỗ	æ
+Vietware Full	Ộ	è
+Vietware Full	Ớ	ì
+Vietware Full	Ờ	é
+Vietware Full	Ở	ê
+Vietware Full	Ỡ	ë
+Vietware Full	Ợ	í
+Vietware Full	Ú	ò
+Vietware Full	Ù	î
+Vietware Full	Ủ	ï
+Vietware Full	Ũ	ñ
+Vietware Full	Ụ	ó
+Vietware Full	Ứ	÷
+Vietware Full	Ừ	ô
+Vietware Full	Ử	õ
+Vietware Full	Ữ	ö
+Vietware Full	Ự	ø
+Vietware Full	Ý	ü
+Vietware Full	Ỳ	ù
+Vietware Full	Ỷ	ú
+Vietware Full	Ỹ	û
+Vietware Full	Ỵ	ÿ
+UTF-8	đ	Ä‘
+UTF-8	â	Ã¢
+UTF-8	ă	Äƒ
+UTF-8	ê	Ãª
+UTF-8	ô	Ã´
+UTF-8	ơ	Æ¡
+UTF-8	ư	Æ°
+UTF-8	á	Ã¡
+UTF-8	à	Ã 
+UTF-8	ả	áº£
+UTF-8	ã	Ã£
+UTF-8	ạ	áº¡
+UTF-8	ấ	áº¥
+UTF-8	ầ	áº§
+UTF-8	ẩ	áº©
+UTF-8	ẫ	áº«
+UTF-8	ậ	áº\u00AD
+UTF-8	ắ	áº¯
+UTF-8	ằ	áº±
+UTF-8	ẳ	áº³
+UTF-8	ẵ	áºµ
+UTF-8	ặ	áº·
+UTF-8	é	Ã©
+UTF-8	è	Ã¨
+UTF-8	ẻ	áº»
+UTF-8	ẽ	áº½
+UTF-8	ẹ	áº¹
+UTF-8	ế	áº¿
+UTF-8	ề	á»
+UTF-8	ể	á»ƒ
+UTF-8	ễ	á»…
+UTF-8	ệ	á»‡
+UTF-8	í	Ã\u00AD
+UTF-8	ì	Ã¬
+UTF-8	ỉ	á»‰
+UTF-8	ĩ	Ä©
+UTF-8	ị	á»‹
+UTF-8	ó	Ã³
+UTF-8	ò	Ã²
+UTF-8	ỏ	á»
+UTF-8	õ	Ãµ
+UTF-8	ọ	á»
+UTF-8	ố	á»‘
+UTF-8	ồ	á»“
+UTF-8	ổ	á»•
+UTF-8	ỗ	á»—
+UTF-8	ộ	á»™
+UTF-8	ớ	á»›
+UTF-8	ờ	á»
+UTF-8	ở	á»Ÿ
+UTF-8	ỡ	á»¡
+UTF-8	ợ	á»£
+UTF-8	ú	Ãº
+UTF-8	ù	Ã¹
+UTF-8	ủ	á»§
+UTF-8	ũ	Å©
+UTF-8	ụ	á»¥
+UTF-8	ứ	á»©
+UTF-8	ừ	á»«
+UTF-8	ử	á»\u00AD
+UTF-8	ữ	á»¯
+UTF-8	ự	á»±
+UTF-8	ý	Ã½
+UTF-8	ỳ	á»³
+UTF-8	ỷ	á»·
+UTF-8	ỹ	á»¹
+UTF-8	ỵ	á»µ
+UTF-8	Đ	Ä
+UTF-8	Â	Ã‚
+UTF-8	Ă	Ä‚
+UTF-8	Ê	ÃŠ
+UTF-8	Ô	Ã”
+UTF-8	Ơ	Æ 
+UTF-8	Ư	Æ¯
+UTF-8	Á	Ã
+UTF-8	À	Ã€
+UTF-8	Ả	áº¢
+UTF-8	Ã	Ãƒ
+UTF-8	Ạ	áº 
+UTF-8	Ấ	áº¤
+UTF-8	Ầ	áº¦
+UTF-8	Ẩ	áº¨
+UTF-8	Ẫ	áºª
+UTF-8	Ậ	áº¬
+UTF-8	Ắ	áº®
+UTF-8	Ằ	áº°
+UTF-8	Ẳ	áº²
+UTF-8	Ẵ	áº´
+UTF-8	Ặ	áº¶
+UTF-8	É	Ã‰
+UTF-8	È	Ãˆ
+UTF-8	Ẻ	áºº
+UTF-8	Ẽ	áº¼
+UTF-8	Ẹ	áº¸
+UTF-8	Ế	áº¾
+UTF-8	Ề	á»€
+UTF-8	Ể	á»‚
+UTF-8	Ễ	á»„
+UTF-8	Ệ	á»†
+UTF-8	Í	Ã
+UTF-8	Ì	ÃŒ
+UTF-8	Ỉ	á»ˆ
+UTF-8	Ĩ	Ä¨
+UTF-8	Ị	á»Š
+UTF-8	Ó	Ã“
+UTF-8	Ò	Ã’
+UTF-8	Ỏ	á»Ž
+UTF-8	Õ	Ã•
+UTF-8	Ọ	á»Œ
+UTF-8	Ố	á»
+UTF-8	Ồ	á»’
+UTF-8	Ổ	á»”
+UTF-8	Ỗ	á»–
+UTF-8	Ộ	á»˜
+UTF-8	Ớ	á»š
+UTF-8	Ờ	á»œ
+UTF-8	Ở	á»ž
+UTF-8	Ỡ	á» 
+UTF-8	Ợ	á»¢
+UTF-8	Ú	Ãš
+UTF-8	Ù	Ã™
+UTF-8	Ủ	á»¦
+UTF-8	Ũ	Å¨
+UTF-8	Ụ	á»¤
+UTF-8	Ứ	á»¨
+UTF-8	Ừ	á»ª
+UTF-8	Ử	á»¬
+UTF-8	Ữ	á»®
+UTF-8	Ự	á»°
+UTF-8	Ý	Ã
+UTF-8	Ỳ	á»²
+UTF-8	Ỷ	á»¶
+UTF-8	Ỹ	á»¸
+UTF-8	Ỵ	á»´
+NCR Decimal	đ	&#273;
+NCR Decimal	â	&#226;
+NCR Decimal	ă	&#259;
+NCR Decimal	ê	&#234;
+NCR Decimal	ô	&#244;
+NCR Decimal	ơ	&#417;
+NCR Decimal	ư	&#432;
+NCR Decimal	á	&#225;
+NCR Decimal	à	&#224;
+NCR Decimal	ả	&#7843;
+NCR Decimal	ã	&#227;
+NCR Decimal	ạ	&#7841;
+NCR Decimal	ấ	&#7845;
+NCR Decimal	ầ	&#7847;
+NCR Decimal	ẩ	&#7849;
+NCR Decimal	ẫ	&#7851;
+NCR Decimal	ậ	&#7853;
+NCR Decimal	ắ	&#7855;
+NCR Decimal	ằ	&#7857;
+NCR Decimal	ẳ	&#7859;
+NCR Decimal	ẵ	&#7861;
+NCR Decimal	ặ	&#7863;
+NCR Decimal	é	&#233;
+NCR Decimal	è	&#232;
+NCR Decimal	ẻ	&#7867;
+NCR Decimal	ẽ	&#7869;
+NCR Decimal	ẹ	&#7865;
+NCR Decimal	ế	&#7871;
+NCR Decimal	ề	&#7873;
+NCR Decimal	ể	&#7875;
+NCR Decimal	ễ	&#7877;
+NCR Decimal	ệ	&#7879;
+NCR Decimal	í	&#237;
+NCR Decimal	ì	&#236;
+NCR Decimal	ỉ	&#7881;
+NCR Decimal	ĩ	&#297;
+NCR Decimal	ị	&#7883;
+NCR Decimal	ó	&#243;
+NCR Decimal	ò	&#242;
+NCR Decimal	ỏ	&#7887;
+NCR Decimal	õ	&#245;
+NCR Decimal	ọ	&#7885;
+NCR Decimal	ố	&#7889;
+NCR Decimal	ồ	&#7891;
+NCR Decimal	ổ	&#7893;
+NCR Decimal	ỗ	&#7895;
+NCR Decimal	ộ	&#7897;
+NCR Decimal	ớ	&#7899;
+NCR Decimal	ờ	&#7901;
+NCR Decimal	ở	&#7903;
+NCR Decimal	ỡ	&#7905;
+NCR Decimal	ợ	&#7907;
+NCR Decimal	ú	&#250;
+NCR Decimal	ù	&#249;
+NCR Decimal	ủ	&#7911;
+NCR Decimal	ũ	&#361;
+NCR Decimal	ụ	&#7909;
+NCR Decimal	ứ	&#7913;
+NCR Decimal	ừ	&#7915;
+NCR Decimal	ử	&#7917;
+NCR Decimal	ữ	&#7919;
+NCR Decimal	ự	&#7921;
+NCR Decimal	ý	&#253;
+NCR Decimal	ỳ	&#7923;
+NCR Decimal	ỷ	&#7927;
+NCR Decimal	ỹ	&#7929;
+NCR Decimal	ỵ	&#7925;
+NCR Decimal	Đ	&#272;
+NCR Decimal	Â	&#194;
+NCR Decimal	Ă	&#258;
+NCR Decimal	Ê	&#202;
+NCR Decimal	Ô	&#212;
+NCR Decimal	Ơ	&#416;
+NCR Decimal	Ư	&#431;
+NCR Decimal	Á	&#193;
+NCR Decimal	À	&#192;
+NCR Decimal	Ả	&#7842;
+NCR Decimal	Ã	&#195;
+NCR Decimal	Ạ	&#7840;
+NCR Decimal	Ấ	&#7844;
+NCR Decimal	Ầ	&#7846;
+NCR Decimal	Ẩ	&#7848;
+NCR Decimal	Ẫ	&#7850;
+NCR Decimal	Ậ	&#7852;
+NCR Decimal	Ắ	&#7854;
+NCR Decimal	Ằ	&#7856;
+NCR Decimal	Ẳ	&#7858;
+NCR Decimal	Ẵ	&#7860;
+NCR Decimal	Ặ	&#7862;
+NCR Decimal	É	&#201;
+NCR Decimal	È	&#200;
+NCR Decimal	Ẻ	&#7866;
+NCR Decimal	Ẽ	&#7868;
+NCR Decimal	Ẹ	&#7864;
+NCR Decimal	Ế	&#7870;
+NCR Decimal	Ề	&#7872;
+NCR Decimal	Ể	&#7874;
+NCR Decimal	Ễ	&#7876;
+NCR Decimal	Ệ	&#7878;
+NCR Decimal	Í	&#205;
+NCR Decimal	Ì	&#204;
+NCR Decimal	Ỉ	&#7880;
+NCR Decimal	Ĩ	&#296;
+NCR Decimal	Ị	&#7882;
+NCR Decimal	Ó	&#211;
+NCR Decimal	Ò	&#210;
+NCR Decimal	Ỏ	&#7886;
+NCR Decimal	Õ	&#213;
+NCR Decimal	Ọ	&#7884;
+NCR Decimal	Ố	&#7888;
+NCR Decimal	Ồ	&#7890;
+NCR Decimal	Ổ	&#7892;
+NCR Decimal	Ỗ	&#7894;
+NCR Decimal	Ộ	&#7896;
+NCR Decimal	Ớ	&#7898;
+NCR Decimal	Ờ	&#7900;
+NCR Decimal	Ở	&#7902;
+NCR Decimal	Ỡ	&#7904;
+NCR Decimal	Ợ	&#7906;
+NCR Decimal	Ú	&#218;
+NCR Decimal	Ù	&#217;
+NCR Decimal	Ủ	&#7910;
+NCR Decimal	Ũ	&#360;
+NCR Decimal	Ụ	&#7908;
+NCR Decimal	Ứ	&#7912;
+NCR Decimal	Ừ	&#7914;
+NCR Decimal	Ử	&#7916;
+NCR Decimal	Ữ	&#7918;
+NCR Decimal	Ự	&#7920;
+NCR Decimal	Ý	&#221;
+NCR Decimal	Ỳ	&#7922;
+NCR Decimal	Ỷ	&#7926;
+NCR Decimal	Ỹ	&#7928;
+NCR Decimal	Ỵ	&#7924;
+NCR Hex	đ	&#x111;
+NCR Hex	ă	&#x103;
+NCR Hex	ơ	&#x1A1;
+NCR Hex	ư	&#x1B0;
+NCR Hex	ả	&#x1EA3;
+NCR Hex	ạ	&#x1EA1;
+NCR Hex	ấ	&#x1EA5;
+NCR Hex	ầ	&#x1EA7;
+NCR Hex	ẩ	&#x1EA9;
+NCR Hex	ẫ	&#x1EAB;
+NCR Hex	ậ	&#x1EAD;
+NCR Hex	ắ	&#x1EAF;
+NCR Hex	ằ	&#x1EB1;
+NCR Hex	ẳ	&#x1EB3;
+NCR Hex	ẵ	&#x1EB5;
+NCR Hex	ặ	&#x1EB7;
+NCR Hex	ẻ	&#x1EBB;
+NCR Hex	ẽ	&#x1EBD;
+NCR Hex	ẹ	&#x1EB9;
+NCR Hex	ế	&#x1EBF;
+NCR Hex	ề	&#x1EC1;
+NCR Hex	ể	&#x1EC3;
+NCR Hex	ễ	&#x1EC5;
+NCR Hex	ệ	&#x1EC7;
+NCR Hex	ỉ	&#x1EC9;
+NCR Hex	ĩ	&#x129;
+NCR Hex	ị	&#x1ECB;
+NCR Hex	ỏ	&#x1ECF;
+NCR Hex	ọ	&#x1ECD;
+NCR Hex	ố	&#x1ED1;
+NCR Hex	ồ	&#x1ED3;
+NCR Hex	ổ	&#x1ED5;
+NCR Hex	ỗ	&#x1ED7;
+NCR Hex	ộ	&#x1ED9;
+NCR Hex	ớ	&#x1EDB;
+NCR Hex	ờ	&#x1EDD;
+NCR Hex	ở	&#x1EDF;
+NCR Hex	ỡ	&#x1EE1;
+NCR Hex	ợ	&#x1EE3;
+NCR Hex	ủ	&#x1EE7;
+NCR Hex	ũ	&#x169;
+NCR Hex	ụ	&#x1EE5;
+NCR Hex	ứ	&#x1EE9;
+NCR Hex	ừ	&#x1EEB;
+NCR Hex	ử	&#x1EED;
+NCR Hex	ữ	&#x1EEF;
+NCR Hex	ự	&#x1EF1;
+NCR Hex	ỳ	&#x1EF3;
+NCR Hex	ỷ	&#x1EF7;
+NCR Hex	ỹ	&#x1EF9;
+NCR Hex	ỵ	&#x1EF5;
+NCR Hex	Đ	&#x110;
+NCR Hex	Ă	&#x102;
+NCR Hex	Ơ	&#x1A0;
+NCR Hex	Ư	&#x1AF;
+NCR Hex	Ả	&#x1EA2;
+NCR Hex	Ạ	&#x1EA0;
+NCR Hex	Ấ	&#x1EA4;
+NCR Hex	Ầ	&#x1EA6;
+NCR Hex	Ẩ	&#x1EA8;
+NCR Hex	Ẫ	&#x1EAA;
+NCR Hex	Ậ	&#x1EAC;
+NCR Hex	Ắ	&#x1EAE;
+NCR Hex	Ằ	&#x1EB0;
+NCR Hex	Ẳ	&#x1EB2;
+NCR Hex	Ẵ	&#x1EB4;
+NCR Hex	Ặ	&#x1EB6;
+NCR Hex	Ẻ	&#x1EBA;
+NCR Hex	Ẽ	&#x1EBC;
+NCR Hex	Ẹ	&#x1EB8;
+NCR Hex	Ế	&#x1EBE;
+NCR Hex	Ề	&#x1EC0;
+NCR Hex	Ể	&#x1EC2;
+NCR Hex	Ễ	&#x1EC4;
+NCR Hex	Ệ	&#x1EC6;
+NCR Hex	Ỉ	&#x1EC8;
+NCR Hex	Ĩ	&#x128;
+NCR Hex	Ị	&#x1ECA;
+NCR Hex	Ỏ	&#x1ECE;
+NCR Hex	Ọ	&#x1ECC;
+NCR Hex	Ố	&#x1ED0;
+NCR Hex	Ồ	&#x1ED2;
+NCR Hex	Ổ	&#x1ED4;
+NCR Hex	Ỗ	&#x1ED6;
+NCR Hex	Ộ	&#x1ED8;
+NCR Hex	Ớ	&#x1EDA;
+NCR Hex	Ờ	&#x1EDC;
+NCR Hex	Ở	&#x1EDE;
+NCR Hex	Ỡ	&#x1EE0;
+NCR Hex	Ợ	&#x1EE2;
+NCR Hex	Ủ	&#x1EE6;
+NCR Hex	Ũ	&#x168;
+NCR Hex	Ụ	&#x1EE4;
+NCR Hex	Ứ	&#x1EE8;
+NCR Hex	Ừ	&#x1EEA;
+NCR Hex	Ử	&#x1EEC;
+NCR Hex	Ữ	&#x1EEE;
+NCR Hex	Ự	&#x1EF0;
+NCR Hex	Ỳ	&#x1EF2;
+NCR Hex	Ỷ	&#x1EF6;
+NCR Hex	Ỹ	&#x1EF8;
+NCR Hex	Ỵ	&#x1EF4;
+Unicode C string Hex		
+Unicode C string Decimal		

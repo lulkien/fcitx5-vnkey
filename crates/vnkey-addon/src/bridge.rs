@@ -1,6 +1,6 @@
-//! cxx bridge consumed by the fcitx5 façade (`cpp/facade.cpp`).
+//! cxx bridge consumed by the fcitx5 facade (`cpp/facade.cpp`).
 //!
-//! Everything policy-related stays on this side; the façade only translates
+//! Everything policy-related stays on this side; the facade only translates
 //! fcitx5 key events and preedit/commit calls.
 
 use std::collections::HashSet;
@@ -58,7 +58,7 @@ mod ffi {
 /// One engine per fcitx5 `InputContext`.
 ///
 /// `engine` is `None` only when the configured input method name is unknown;
-/// the façade then passes every key through instead of failing to load.
+/// the facade then passes every key through instead of failing to load.
 pub struct EngineHandle {
     engine: Option<VnKeyEngine>,
 }

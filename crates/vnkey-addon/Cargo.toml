@@ -20,5 +20,5 @@ cxx-build = "1"
 
 [features]
 default = []
-# Builds the cxx bridge (and the C++ façade when fcitx5 headers are present).
+# Builds the cxx bridge (and the C++ facade when fcitx5 headers are present).
 ffi = ["dep:cxx"]
