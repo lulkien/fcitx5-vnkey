@@ -466,4 +466,15 @@ void VnKeyEngine::updateMacroAction(InputContext *ic) {
 
 } // namespace fcitx
 
-FCITX_ADDON_FACTORY_V2(vnkey, fcitx::VnKeyFactory)
+// fcitx5 5.1.8 started looking up a per-addon factory symbol; 5.1.7 (Ubuntu
+// 24.04) still loads the unsuffixed one. Export both, so one binary loads under
+// either loader and the headers decide, not the build machine.
+#ifdef FCITX_ADDON_FACTORY_V2_BACKWARDS
+FCITX_ADDON_FACTORY_V2_BACKWARDS(vnkey, fcitx::VnKeyFactory)
+#else
+FCITX_ADDON_FACTORY(fcitx::VnKeyFactory)
+extern "C" FCITXCORE_EXPORT ::fcitx::AddonFactory *
+fcitx_addon_factory_instance_vnkey() {
+    return fcitx_addon_factory_instance();
+}
+#endif

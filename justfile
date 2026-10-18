@@ -91,8 +91,10 @@ tables-check:
 
 # Verify the built object: exported factory symbol, no unresolved symbols.
 check: build tables-check
-    @nm -D --defined-only {{shared_lib}} | grep -q fcitx_addon_factory_instance_vnkey \
-        && echo "factory symbol: ok"
+    @nm -D --defined-only {{shared_lib}} | awk '{print $3}' \
+        | grep -qx fcitx_addon_factory_instance_vnkey && echo "factory symbol (fcitx5 >= 5.1.8): ok"
+    @nm -D --defined-only {{shared_lib}} | awk '{print $3}' \
+        | grep -qx fcitx_addon_factory_instance && echo "factory symbol (fcitx5 5.1.7): ok"
     @if ldd -r {{shared_lib}} 2>&1 | grep -q "undefined symbol"; then \
         echo "undefined symbols: FOUND"; exit 1; \
     else echo "undefined symbols: none"; fi
@@ -101,6 +103,49 @@ check: build tables-check
 deb:
     dpkg-buildpackage -b -us -uc -d
     @ls -l ../fcitx5-vnkey_*.deb | tail -1
+
+# Cut a release: bump the version in Cargo.toml, prepend a changelog entry,
+# commit, and tag v<version>. Pushing is left to you.
+bump $version:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    new="{{version}}"
+    cur=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
+
+    if ! [[ $new =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "usage: just bump 1.2.3 (got '$new')" >&2
+        exit 1
+    fi
+    if [ "$new" = "$cur" ]; then
+        echo "already at $new" >&2
+        exit 1
+    fi
+    if [ -n "$(git status --porcelain)" ]; then
+        echo "working tree is dirty: commit or stash first" >&2
+        exit 1
+    fi
+    if git rev-parse -q --verify "refs/tags/v$new" >/dev/null; then
+        echo "tag v$new already exists" >&2
+        exit 1
+    fi
+
+    sed -i "s/^version = \"$cur\"/version = \"$new\"/" Cargo.toml
+    # The workspace crates are pinned in Cargo.lock too.
+    cargo update --workspace --offline --quiet
+
+    maintainer=$(sed -n 's/^Maintainer: //p' debian/control | head -1)
+    {
+        printf 'fcitx5-vnkey (%s-1) unstable; urgency=medium\n\n' "$new"
+        printf '  * Release %s.\n\n' "$new"
+        printf ' -- %s  %s\n\n' "$maintainer" "$(date -R)"
+        cat debian/changelog
+    } > debian/changelog.new
+    mv debian/changelog.new debian/changelog
+
+    git add Cargo.toml Cargo.lock debian/changelog
+    git commit -q -m "release: v$new"
+    git tag -a "v$new" -m "v$new"
+    echo "tagged v$new at $(git rev-parse --short HEAD) — push with: git push --follow-tags"
 
 clean:
     cargo clean

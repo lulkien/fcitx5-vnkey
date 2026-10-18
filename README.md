@@ -106,9 +106,9 @@ writes — verified by extracting the `.deb` and diffing it against a `DESTDIR`
 stage.
 
 ```
-just deb                          # -> ../fcitx5-vnkey_0.1.0-1_amd64.deb
+just deb                          # -> ../fcitx5-vnkey_<version>-1_amd64.deb
 dpkg-buildpackage -b -us -uc -d   # the same thing, spelled out
-sudo apt install ./fcitx5-vnkey_0.1.0-1_amd64.deb
+sudo apt install ./fcitx5-vnkey_*.deb
 ```
 
 The `-d` skips `dpkg-checkbuilddeps`: a rustup toolchain is not a Debian
@@ -116,6 +116,26 @@ package, so the declared Build-Depends cannot be satisfied that way even with
 `cargo` on `PATH`. Drop the flag on a machine with distro `cargo`/`rustc`.
 `debian/rules` refuses to build when the `Cargo.toml` version and
 `debian/changelog` disagree.
+
+## Releases
+
+`just bump` is the whole release step — it writes the version into `Cargo.toml`,
+`Cargo.lock` and `debian/changelog`, commits, and creates the tag:
+
+```
+just bump 0.2.0          # -> commit "release: v0.2.0" + annotated tag v0.2.0
+git push --follow-tags   # the tag is what starts the release build
+```
+
+Pushing a `v*` tag runs `.github/workflows/release.yml`, which checks that the
+tag, `Cargo.toml` and `debian/changelog` all carry the same version, runs
+`just check` and `just test`, builds the `.deb` with `just deb`, and publishes a
+GitHub release containing the package and a `SHA256SUMS` file. A tag that does
+not match the sources fails the build before anything is published — that is
+what catches a tag made without `just bump`.
+
+`just bump` refuses to run on a dirty tree, on a version that is already
+current, or when the tag already exists; it does not push.
 
 ## License
 
