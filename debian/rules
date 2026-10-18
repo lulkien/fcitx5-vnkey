@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+# Hand-written rules: this package needs no debhelper. `just` builds and
+# installs (the same code path the README documents), dpkg-deb packs the result.
+#
+#   dpkg-buildpackage -b -us -uc         (binary package, unsigned)
+#
+# Build in-tree, so `just` keeps its target/ directory between builds.
+
+PKGDIR  := debian/fcitx5-vnkey
+VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/-[^-]*$$//')
+CARGO   := $(shell sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
+
+%:
+	@echo "unknown target: $@ (use dpkg-buildpackage)"; exit 1
+
+# The crate version and the changelog version must agree, or the .deb will
+# advertise something the binary does not contain.
+check-version:
+	@test "$(VERSION)" = "$(CARGO)" || { \
+		echo "debian/changelog ($(VERSION)) and Cargo.toml ($(CARGO)) disagree"; \
+		exit 1; }
+
+build: check-version
+	just build
+
+binary: build
+	rm -rf $(PKGDIR)
+	DESTDIR=$(CURDIR)/$(PKGDIR) just --no-deps install
+	install -d $(PKGDIR)/DEBIAN
+	dpkg-gencontrol -pfcitx5-vnkey -P$(PKGDIR)
+	dpkg-deb --root-owner-group --build $(PKGDIR) ..
+
+# Keep target/: a rebuild after `clean` would recompile every crate.
+clean:
+	rm -rf $(PKGDIR) out
+
+.PHONY: check-version build binary clean

@@ -1,0 +1,19 @@
+Source: fcitx5-vnkey
+Section: utils
+Priority: optional
+Maintainer: lulkien <kien.luuhoang.arch@proton.me>
+Build-Depends: cargo, rustc, g++, pkg-config, just,
+ libfcitx5core-dev, libfcitx5config-dev, libfcitx5utils-dev
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/lulkien/fcitx5-vnkey
+
+Package: fcitx5-vnkey
+Architecture: any
+Depends: libfcitx5core7, libfcitx5config6, libfcitx5utils2, libstdc++6, libc6
+Recommends: fcitx5
+Description: Vietnamese input method for fcitx5, Rust engine
+ A Vietnamese input-method engine written in Rust, wrapped in a small fcitx5
+ addon. Supports the Telex, Telex 2, Telex W, VNI, VIQR and Microsoft layouts,
+ sixteen legacy output charsets, macros, an embedded spell-check dictionary,
+ and a daemon-wide Vietnamese/English mode toggle.

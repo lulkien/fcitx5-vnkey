@@ -14,12 +14,14 @@ crates/vnkey-addon    preedit/commit policy, macros, cxx bridge,
                        cpp/facade.{h,cpp} (the fcitx5 binding)
 tools/defs/           input-method rules and charset tables (TSV: the data)
 tools/gen_tables.py   formats those tables into vnkey-core/src/{im_defs,charset}.rs
+debian/               packaging: hand-written rules, no debhelper
 ```
 
 ## Build
 
 Needs a Rust toolchain (1.82+), a C++ compiler, `pkg-config`, `just`, and the
-fcitx5 development headers:
+fcitx5 development headers (`python3` only for regenerating the tables,
+`dpkg-dev` only for the Debian package):
 
 ```
 sudo apt install libfcitx5core-dev libfcitx5config-dev libfcitx5utils-dev
@@ -39,7 +41,7 @@ there is no per-user install — copying the files into `/usr` requires root:
 
 ```
 just build                    # as yourself
-sudo just --no-deps install   # as root: copies 12 files into /usr
+sudo just --no-deps install   # as root: copies 21 files into /usr
 fcitx5 -r                     # restart the daemon
 ```
 
@@ -51,8 +53,11 @@ To inspect what would be installed, or to build a package, stage it instead:
 
 ```
 DESTDIR=/tmp/stage just --no-deps install
-find /tmp/stage -type f        # lib, 2 descriptors, SVG, 8 PNG sizes
+find /tmp/stage -type f        # 21 files: lib, 2 descriptors, 2 SVGs, 16 PNG sizes
 ```
+
+Installing the Debian package below does the same thing, without `just` on the
+target machine.
 
 After restarting fcitx5, add **VnKey** in the input-method list. Restart
 without the files installed and the journal reports `Could not locate library
@@ -91,6 +96,26 @@ just tables-check  # fail if the generated files have drifted (part of `just che
 
 Regeneration needs nothing but Python 3 — no other language toolchain and no
 external checkout.
+
+## Debian package
+
+`debian/` is hand-written — no debhelper. `debian/rules` calls the same
+`just build` / `just install` path the sections above document, then `dpkg-deb`
+packs the staged tree, so a package contains exactly the 21 files `just install`
+writes — verified by extracting the `.deb` and diffing it against a `DESTDIR`
+stage.
+
+```
+just deb                          # -> ../fcitx5-vnkey_0.1.0-1_amd64.deb
+dpkg-buildpackage -b -us -uc -d   # the same thing, spelled out
+sudo apt install ./fcitx5-vnkey_0.1.0-1_amd64.deb
+```
+
+The `-d` skips `dpkg-checkbuilddeps`: a rustup toolchain is not a Debian
+package, so the declared Build-Depends cannot be satisfied that way even with
+`cargo` on `PATH`. Drop the flag on a machine with distro `cargo`/`rustc`.
+`debian/rules` refuses to build when the `Cargo.toml` version and
+`debian/changelog` disagree.
 
 ## License
 

@@ -97,6 +97,11 @@ check: build tables-check
         echo "undefined symbols: FOUND"; exit 1; \
     else echo "undefined symbols: none"; fi
 
+# Debian binary package (dpkg-dev only, no debhelper; -d because rustup is not a dpkg package).
+deb:
+    dpkg-buildpackage -b -us -uc -d
+    @ls -l ../fcitx5-vnkey_*.deb | tail -1
+
 clean:
     cargo clean
-    rm -rf {{out_dir}} build
+    rm -rf {{out_dir}} build debian/fcitx5-vnkey

@@ -9,3 +9,9 @@
 
 # just/ generated files
 /out/
+
+# Debian packaging artifacts
+/debian/fcitx5-vnkey/
+*.buildinfo
+*.changes
+/debian/files
