@@ -22,6 +22,8 @@ shared_lib := release_dir / "libvnkey.so"
 destdir := env("DESTDIR", "")
 
 icon_sizes := "16 22 24 32 48 64 128 256"
+# fcitx_vnkey = Vietnamese mode, fcitx_vnkey_en = English mode.
+icon_names := "fcitx_vnkey fcitx_vnkey_en"
 
 default: build
 
@@ -46,10 +48,13 @@ install: build
     install -Dm755 {{shared_lib}} {{destdir}}{{libdir}}/fcitx5/libvnkey.so
     install -Dm644 {{out_dir}}/vnkey-addon.conf {{destdir}}{{datadir}}/fcitx5/addon/vnkey.conf
     install -Dm644 {{out_dir}}/vnkey.conf {{destdir}}{{datadir}}/fcitx5/inputmethod/vnkey.conf
-    install -Dm644 data/fcitx_vnkey.svg {{destdir}}{{datadir}}/icons/hicolor/scalable/apps/fcitx_vnkey.svg
-    for size in {{icon_sizes}}; do \
-        install -Dm644 "data/icons/$size/fcitx_vnkey.png" \
-            "{{destdir}}{{datadir}}/icons/hicolor/${size}x${size}/apps/fcitx_vnkey.png"; \
+    for icon in {{icon_names}}; do \
+        install -Dm644 "data/$icon.svg" \
+            "{{destdir}}{{datadir}}/icons/hicolor/scalable/apps/$icon.svg"; \
+        for size in {{icon_sizes}}; do \
+            install -Dm644 "data/icons/$size/$icon.png" \
+                "{{destdir}}{{datadir}}/icons/hicolor/${size}x${size}/apps/$icon.png"; \
+        done; \
     done
     @echo "installed to {{destdir}}{{prefix}}"
 
@@ -58,9 +63,11 @@ uninstall:
     rm -f {{destdir}}{{libdir}}/fcitx5/libvnkey.so
     rm -f {{destdir}}{{datadir}}/fcitx5/addon/vnkey.conf
     rm -f {{destdir}}{{datadir}}/fcitx5/inputmethod/vnkey.conf
-    rm -f {{destdir}}{{datadir}}/icons/hicolor/scalable/apps/fcitx_vnkey.svg
-    for size in {{icon_sizes}}; do \
-        rm -f "{{destdir}}{{datadir}}/icons/hicolor/${size}x${size}/apps/fcitx_vnkey.png"; \
+    for icon in {{icon_names}}; do \
+        rm -f "{{destdir}}{{datadir}}/icons/hicolor/scalable/apps/$icon.svg"; \
+        for size in {{icon_sizes}}; do \
+            rm -f "{{destdir}}{{datadir}}/icons/hicolor/${size}x${size}/apps/$icon.png"; \
+        done; \
     done
 
 # Unit tests.

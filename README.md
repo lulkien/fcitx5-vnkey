@@ -63,6 +63,21 @@ disagree.
 sudo just --no-deps uninstall  # removes exactly the installed files
 ```
 
+## Vietnamese / English mode
+
+The addon has one daemon-wide mode switch, so a toggle affects every window at
+once — no second input-method group needed:
+
+- **Ctrl+Shift+space** (configurable as *Switch Vietnamese/English mode*) flips it.
+- The status area shows a checkable **Vietnamese** / **English** item, and the
+  input-method icon follows the mode: green **V** for Vietnamese, blue **E** for
+  English.
+- Switching commits whatever word is being typed instead of dropping it, in
+  every open input context.
+- In English mode every key passes straight to the application.
+- The mode is stored in `conf/vnkey.conf` (`VietnameseMode`), so it survives a
+  daemon restart and a config reload.
+
 ## Data tables
 
 The input-method rules and the 16 legacy output charsets live as TSV under

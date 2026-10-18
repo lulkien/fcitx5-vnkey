@@ -79,6 +79,7 @@ void VnKeyState::setOption() {
     options.free_marking = *config.freeMarking;
     options.output_charset = rust::String(config.outputCharset->data());
     (*engine_)->set_options(std::move(options));
+    (*engine_)->set_vietnamese_mode(*config.vietnameseMode);
 }
 
 void VnKeyState::keyEvent(KeyEvent &keyEvent) {
@@ -91,6 +92,12 @@ void VnKeyState::keyEvent(KeyEvent &keyEvent) {
     }
     if (keyEvent.rawKey().check(FcitxKey_Shift_L) ||
         keyEvent.rawKey().check(FcitxKey_Shift_R)) {
+        return;
+    }
+
+    if (keyEvent.key().checkKeyList(*owner_->config().switchKey)) {
+        owner_->toggleVietnameseMode(ic_);
+        keyEvent.filterAndAccept();
         return;
     }
 
@@ -237,6 +244,12 @@ VnKeyEngine::VnKeyEngine(Instance *instance)
         charsetMenu_->addAction(action);
     }
 
+    modeAction_ = std::make_unique<SimpleAction>();
+    modeAction_->setCheckable(true);
+    connections_.emplace_back(modeAction_->connect<SimpleAction::Activated>(
+        [this](InputContext *ic) { toggleVietnameseMode(ic); }));
+    uiManager.registerAction("vnkey-mode", modeAction_.get());
+
     spellCheckAction_ = std::make_unique<SimpleAction>();
     spellCheckAction_->setIcon("tools-check-spelling");
     connections_.emplace_back(
@@ -300,11 +313,16 @@ void VnKeyEngine::populateConfig() {
     updateCharsetAction(nullptr);
     updateSpellAction(nullptr);
     updateMacroAction(nullptr);
+    updateModeAction(nullptr);
 }
 
 std::string VnKeyEngine::subMode(const InputMethodEntry & /*entry*/,
                                   InputContext & /*inputContext*/) {
     return *config_.inputMethod;
+}
+
+std::string VnKeyEngine::overrideIcon(const InputMethodEntry & /*entry*/) {
+    return *config_.vietnameseMode ? "fcitx_vnkey" : "fcitx_vnkey_en";
 }
 
 void VnKeyEngine::activate(const InputMethodEntry & /*entry*/,
@@ -314,7 +332,9 @@ void VnKeyEngine::activate(const InputMethodEntry & /*entry*/,
     updateCharsetAction(event.inputContext());
     updateSpellAction(event.inputContext());
     updateMacroAction(event.inputContext());
+    updateModeAction(event.inputContext());
 
+    statusArea.addAction(StatusGroup::InputMethod, modeAction_.get());
     statusArea.addAction(StatusGroup::InputMethod, inputMethodAction_.get());
     statusArea.addAction(StatusGroup::InputMethod, charsetAction_.get());
     statusArea.addAction(StatusGroup::InputMethod, spellCheckAction_.get());
@@ -398,6 +418,40 @@ void VnKeyEngine::updateSpellAction(InputContext *ic) {
                                         : _("Spell Check Disabled"));
     if (ic) {
         spellCheckAction_->update(ic);
+    }
+}
+
+void VnKeyEngine::toggleVietnameseMode(InputContext *ic) {
+    const bool next = !*config_.vietnameseMode;
+    config_.vietnameseMode.setValue(next);
+    saveConfig();
+
+    // Global by construction: config_ belongs to the addon, not to an input
+    // context, so every engine sees the same value. Flush each pending word
+    // before flipping, otherwise a half-typed syllable disappears.
+    if (factory_.registered()) {
+        instance_->inputContextManager().foreach([this](InputContext *context) {
+            auto *state = context->propertyFor(&factory_);
+            state->commitBuffer();
+            state->setOption();
+            state->reset();
+            return true;
+        });
+    }
+
+    updateModeAction(ic);
+    if (ic) {
+        ic->updateUserInterface(UserInterfaceComponent::StatusArea);
+    }
+}
+
+void VnKeyEngine::updateModeAction(InputContext *ic) {
+    const bool vietnamese = *config_.vietnameseMode;
+    modeAction_->setChecked(vietnamese);
+    modeAction_->setIcon(vietnamese ? "fcitx_vnkey" : "fcitx_vnkey_en");
+    modeAction_->setShortText(vietnamese ? _("Vietnamese") : _("English"));
+    if (ic) {
+        modeAction_->update(ic);
     }
 }
 

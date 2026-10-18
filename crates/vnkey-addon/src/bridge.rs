@@ -43,6 +43,8 @@ mod ffi {
         fn process_key_event(self: &mut EngineHandle, key_val: u32, state: u32) -> bool;
         fn set_options(self: &mut EngineHandle, options: EngineOptions);
         fn set_restore_key_stroke(self: &mut EngineHandle);
+        fn set_vietnamese_mode(self: &mut EngineHandle, enabled: bool);
+        fn vietnamese_mode(self: &EngineHandle) -> bool;
         fn pull_preedit(self: &EngineHandle) -> String;
         fn pull_commit(self: &mut EngineHandle) -> String;
         fn commit_preedit(self: &mut EngineHandle);
@@ -95,6 +97,19 @@ impl EngineHandle {
         if let Some(engine) = self.engine.as_mut() {
             engine.set_restore_key_stroke();
         }
+    }
+
+    pub fn set_vietnamese_mode(&mut self, enabled: bool) {
+        if let Some(engine) = self.engine.as_mut() {
+            engine.set_vietnamese_mode(enabled);
+        }
+    }
+
+    pub fn vietnamese_mode(&self) -> bool {
+        self.engine
+            .as_ref()
+            .map(VnKeyEngine::vietnamese_mode)
+            .unwrap_or(true)
     }
 
     pub fn pull_preedit(&self) -> String {

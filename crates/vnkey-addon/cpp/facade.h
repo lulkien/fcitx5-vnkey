@@ -93,6 +93,13 @@ FCITX_CONFIGURATION(
                              _("Allow type with more freedom"), true};
     Option<bool> displayUnderline{this, "DisplayUnderline",
                                   _("Underline the preedit text"), true};
+    Option<bool> vietnameseMode{this, "VietnameseMode",
+                                _("Vietnamese mode (off = English)"), true};
+    KeyListOption switchKey{this,
+                            "SwitchKey",
+                            _("Switch Vietnamese/English mode"),
+                            {Key("Control+Shift+space")},
+                            KeyListConstrain()};
     SubConfigOption macroTable{this, "MacroTable", _("Macro"),
                                "fcitx://config/addon/vnkey/macro"};);
 
@@ -131,6 +138,7 @@ public:
                InputContextEvent &event) override;
     std::string subMode(const InputMethodEntry &entry,
                         InputContext &inputContext) override;
+    std::string overrideIcon(const InputMethodEntry &entry) override;
 
     const Configuration *getConfig() const override { return &config_; }
     void setConfig(const RawConfig &config) override;
@@ -150,6 +158,11 @@ public:
     void updateCharsetAction(InputContext *ic);
     void updateSpellAction(InputContext *ic);
     void updateMacroAction(InputContext *ic);
+    void updateModeAction(InputContext *ic);
+
+    /// Flip the daemon-wide Vietnamese/English flag, flush every pending
+    /// word and push the new state into all live engines.
+    void toggleVietnameseMode(InputContext *ic);
 
 private:
     void populateConfig();
@@ -168,6 +181,7 @@ private:
     std::vector<std::unique_ptr<SimpleAction>> charsetSubAction_;
     std::unique_ptr<Menu> charsetMenu_;
     std::unique_ptr<SimpleAction> spellCheckAction_;
+    std::unique_ptr<SimpleAction> modeAction_;
     std::unique_ptr<SimpleAction> macroAction_;
     std::vector<ScopedConnection> connections_;
 };
