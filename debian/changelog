@@ -1,3 +1,9 @@
+fcitx5-vnkey (0.1.1-1) unstable; urgency=medium
+
+  * Release 0.1.1.
+
+ -- lulkien <kien.luuhoang.arch@proton.me>  Mon, 19 Oct 2026 21:06:45 +0700
+
 fcitx5-vnkey (0.1.0-1) unstable; urgency=medium
 
   * Initial packaging.
