@@ -5,6 +5,7 @@
 //! lowercased when loading.
 
 use std::collections::HashSet;
+use std::sync::{Arc, OnceLock};
 
 /// Vietnamese syllable dictionary. Provenance is not established; treat it as
 /// third-party data until that is verified (see NOTICE).
@@ -18,7 +19,12 @@ pub fn from_lines(text: &str) -> HashSet<String> {
         .collect()
 }
 
-/// The default dictionary, built once per call (≈7.9k entries).
-pub fn vietnamese() -> HashSet<String> {
-    from_lines(VIETNAMESE_DICT)
+/// The embedded dictionary, parsed once per process.
+///
+/// One engine exists per input context and engines are rebuilt on every config
+/// change, so parsing 7.9k lines per engine would stall the daemon and hold a
+/// private copy of the set per window. Share one `Arc` instead.
+pub fn vietnamese() -> Arc<HashSet<String>> {
+    static DICT: OnceLock<Arc<HashSet<String>>> = OnceLock::new();
+    Arc::clone(DICT.get_or_init(|| Arc::new(from_lines(VIETNAMESE_DICT))))
 }

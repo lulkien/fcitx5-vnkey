@@ -11,10 +11,11 @@
 #include <fcitx-utils/keysym.h>
 #include <fcitx-utils/log.h>
 #include <fcitx-utils/textformatflags.h>
-#include <fcitx-utils/utf8.h>
 #include <fcitx/text.h>
 
+#include <algorithm>
 #include <cstdlib>
+#include <stdexcept>
 #include <utility>
 
 namespace fcitx {
@@ -31,6 +32,16 @@ std::string toString(rust::String value) { return {value.c_str()}; }
 
 rust::Str toStr(const std::string &value) {
     return rust::Str(value.data(), value.size());
+}
+
+// Macro table as a comparable value, to tell whether a reload changed it.
+std::vector<std::pair<std::string, std::string>>
+macroSnapshot(const VnKeyMacroTable &table) {
+    std::vector<std::pair<std::string, std::string>> snapshot;
+    for (const auto &entry : *table.macros) {
+        snapshot.emplace_back(*entry.key, *entry.value);
+    }
+    return snapshot;
 }
 
 } // namespace
@@ -50,8 +61,8 @@ void VnKeyState::setEngine() {
     rust::Vec<vnkey::MacroPair> macros;
     for (const auto &entry : *owner_->macroTable().macros) {
         vnkey::MacroPair pair;
-        pair.key = rust::String(entry.key->data());
-        pair.value = rust::String(entry.value->data());
+        pair.key = rust::String(*entry.key);
+        pair.value = rust::String(*entry.value);
         macros.push_back(std::move(pair));
     }
 
@@ -101,15 +112,25 @@ void VnKeyState::keyEvent(KeyEvent &keyEvent) {
         return;
     }
 
-    if (keyEvent.key().checkKeyList(*owner_->config().restoreKeyStroke)) {
-        (*engine_)->set_restore_key_stroke();
-        keyEvent.filterAndAccept();
-        return;
-    }
-
     const uint32_t sym = keyEvent.rawKey().sym();
     const uint32_t states = keyEvent.rawKey().states();
-    if ((*engine_)->process_key_event(sym, states)) {
+    // The panel only ever mirrors the engine's preedit, and every other path
+    // that empties one empties the other (reset/commitBuffer), so an empty
+    // preedit before and after means there is nothing to repaint.
+    const bool hadPreedit = !(*engine_)->pull_preedit().empty();
+
+    if (keyEvent.key().checkKeyList(*owner_->config().restoreKeyStroke)) {
+        // The hotkey is only ours while there is a composition to restore;
+        // idle (or in English mode, where nothing composes) it is an ordinary
+        // key and must reach the application untouched, with no engine call
+        // that could consume it (a macro-enabled word break would).
+        if (!(*engine_)->restore_key_stroke()) {
+            return;
+        }
+        // Restored in place; fall through to re-render the preedit. The
+        // hotkey is swallowed, and the raw keystrokes stay editable.
+        keyEvent.filterAndAccept();
+    } else if ((*engine_)->process_key_event(sym, states)) {
         keyEvent.filterAndAccept();
     }
 
@@ -118,26 +139,25 @@ void VnKeyState::keyEvent(KeyEvent &keyEvent) {
         ic_->commitString(toString(commit));
     }
 
-    ic_->inputPanel().reset();
     const auto preedit = (*engine_)->pull_preedit();
+    if (!hadPreedit && preedit.empty()) {
+        return;
+    }
+
+    ic_->inputPanel().reset();
     if (!preedit.empty()) {
-        const std::string preeditUtf8 = toString(preedit);
-        // Legacy charsets (TCVN3, VISCII, …) are not UTF-8; never hand them to
-        // the input panel as text.
-        if (utf8::validate(preeditUtf8)) {
-            Text text;
-            TextFormatFlags format;
-            if (ic_->capabilityFlags().test(CapabilityFlag::Preedit) &&
-                *owner_->config().displayUnderline) {
-                format = TextFormatFlag::Underline;
-            }
-            text.append(preeditUtf8, format);
-            text.setCursor(text.textLength());
-            if (ic_->capabilityFlags().test(CapabilityFlag::Preedit)) {
-                ic_->inputPanel().setClientPreedit(text);
-            } else {
-                ic_->inputPanel().setPreedit(text);
-            }
+        Text text;
+        TextFormatFlags format;
+        if (ic_->capabilityFlags().test(CapabilityFlag::Preedit) &&
+            *owner_->config().displayUnderline) {
+            format = TextFormatFlag::Underline;
+        }
+        text.append(toString(preedit), format);
+        text.setCursor(text.textLength());
+        if (ic_->capabilityFlags().test(CapabilityFlag::Preedit)) {
+            ic_->inputPanel().setClientPreedit(text);
+        } else {
+            ic_->inputPanel().setPreedit(text);
         }
     }
     ic_->updatePreedit();
@@ -307,7 +327,25 @@ void VnKeyEngine::setSubConfig(const std::string &path,
 }
 
 void VnKeyEngine::populateConfig() {
-    refreshEngine();
+    // The legacy byte charsets are not offered any more (commitString needs
+    // UTF-8). A config that still names one would otherwise emit mojibake.
+    if (std::find(charsets_.begin(), charsets_.end(),
+                  *config_.outputCharset) == charsets_.end()) {
+        if (warnedCharset_ != *config_.outputCharset) {
+            warnedCharset_ = *config_.outputCharset;
+            FCITX_INFO() << "Bamboors: output charset \"" << warnedCharset_
+                         << "\" is no longer offered; using Unicode";
+        }
+        config_.outputCharset.setValue("Unicode");
+    }
+    // Only an input-method or macro-table change needs a new engine (and so a
+    // flush; macros are copied into the engine when it is built). Any other
+    // setting is applied to the live engines without touching the word being
+    // typed.
+    if (appliedInputMethod_ != *config_.inputMethod ||
+        appliedMacros_ != macroSnapshot(macroTable_)) {
+        refreshEngine();
+    }
     refreshOption();
     updateInputMethodAction(nullptr);
     updateCharsetAction(nullptr);
@@ -347,6 +385,10 @@ void VnKeyEngine::deactivate(const InputMethodEntry & /*entry*/,
     if (event.type() != EventType::InputContextFocusOut) {
         state->commitBuffer();
     } else {
+        // Deliberately not a commit (matches upstream): with client preedit
+        // the frontend owns that text and normally commits it on focus loss,
+        // so committing here would risk a double commit. Losing one
+        // unfinished word is the safer failure.
         state->reset();
     }
 }
@@ -364,29 +406,40 @@ void VnKeyEngine::reset(const InputMethodEntry & /*entry*/,
 }
 
 void VnKeyEngine::refreshEngine() {
+    appliedInputMethod_ = *config_.inputMethod;
+    appliedMacros_ = macroSnapshot(macroTable_);
     if (!factory_.registered()) {
         return;
     }
     instance_->inputContextManager().foreach([this](InputContext *ic) {
         auto *state = ic->propertyFor(&factory_);
+        // Flush the half-typed word before the engine is replaced: a config
+        // change must not silently discard what the user was typing.
+        state->commitBuffer();
         state->setEngine();
-        if (ic->hasFocus()) {
-            state->reset();
-        }
         return true;
     });
 }
 
 void VnKeyEngine::refreshOption() {
+    // Toggles (spell check, macro, restore, tone style, ...) leave the current
+    // composition valid, so the buffer is kept. Only a charset change makes
+    // the preedit representation stale, and leaving Vietnamese mode leaves
+    // nothing to compose, so both flush.
+    const bool vietnamese = *config_.vietnameseMode;
+    const bool flush = appliedCharset_ != *config_.outputCharset ||
+                       (appliedVietnameseMode_ && !vietnamese);
+    appliedCharset_ = *config_.outputCharset;
+    appliedVietnameseMode_ = vietnamese;
     if (!factory_.registered()) {
         return;
     }
-    instance_->inputContextManager().foreach([this](InputContext *ic) {
+    instance_->inputContextManager().foreach([this, flush](InputContext *ic) {
         auto *state = ic->propertyFor(&factory_);
-        state->setOption();
-        if (ic->hasFocus()) {
-            state->reset();
+        if (flush) {
+            state->commitBuffer();
         }
+        state->setOption();
         return true;
     });
 }
@@ -424,6 +477,7 @@ void VnKeyEngine::updateSpellAction(InputContext *ic) {
 void VnKeyEngine::toggleVietnameseMode(InputContext *ic) {
     const bool next = !*config_.vietnameseMode;
     config_.vietnameseMode.setValue(next);
+    appliedVietnameseMode_ = next;
     saveConfig();
 
     // Global by construction: config_ belongs to the addon, not to an input

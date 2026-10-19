@@ -4,6 +4,8 @@
 //! fcitx5 key events and preedit/commit calls.
 
 use std::collections::HashSet;
+use std::io::Read;
+use std::sync::Arc;
 
 use crate::dictionary;
 use crate::engine::VnKeyEngine;
@@ -42,7 +44,7 @@ mod ffi {
         fn valid(self: &EngineHandle) -> bool;
         fn process_key_event(self: &mut EngineHandle, key_val: u32, state: u32) -> bool;
         fn set_options(self: &mut EngineHandle, options: EngineOptions);
-        fn set_restore_key_stroke(self: &mut EngineHandle);
+        fn restore_key_stroke(self: &mut EngineHandle) -> bool;
         fn set_vietnamese_mode(self: &mut EngineHandle, enabled: bool);
         fn vietnamese_mode(self: &EngineHandle) -> bool;
         fn pull_preedit(self: &EngineHandle) -> String;
@@ -93,10 +95,10 @@ impl EngineHandle {
         });
     }
 
-    pub fn set_restore_key_stroke(&mut self) {
-        if let Some(engine) = self.engine.as_mut() {
-            engine.set_restore_key_stroke();
-        }
+    pub fn restore_key_stroke(&mut self) -> bool {
+        self.engine
+            .as_mut()
+            .is_some_and(VnKeyEngine::restore_key_stroke)
     }
 
     pub fn set_vietnamese_mode(&mut self, enabled: bool) {
@@ -139,20 +141,39 @@ impl EngineHandle {
     }
 }
 
+/// Refuse absurd dictionary overrides instead of reading them into memory.
+const MAX_DICTIONARY_BYTES: u64 = 16 << 20;
+
+/// Read an override through one handle: the type check and the size cap apply
+/// to the file actually read, and `take` bounds the read even when the file
+/// reports `st_size == 0` (procfs, some FUSE).
+fn load_dictionary_override(path: &str) -> Option<Arc<HashSet<String>>> {
+    let file = std::fs::File::open(path).ok()?;
+    if !file.metadata().ok()?.is_file() {
+        return None;
+    }
+    let mut text = String::new();
+    file.take(MAX_DICTIONARY_BYTES + 1)
+        .read_to_string(&mut text)
+        .ok()?;
+    if text.len() as u64 > MAX_DICTIONARY_BYTES {
+        return None;
+    }
+    Some(Arc::new(dictionary::from_lines(&text)))
+}
+
 pub fn create(
     input_method: &str,
     macros: Vec<ffi::MacroPair>,
     dictionary_path: &str,
 ) -> Box<EngineHandle> {
-    let dictionary: HashSet<String> = if dictionary_path.is_empty() {
+    // An empty path means the embedded dictionary; an override that is
+    // unreadable or unreasonably large falls back to it rather than silently
+    // disabling spell checking.
+    let dictionary = if dictionary_path.is_empty() {
         dictionary::vietnamese()
     } else {
-        match std::fs::read_to_string(dictionary_path) {
-            Ok(text) => dictionary::from_lines(&text),
-            // An unreadable override falls back to the embedded dictionary
-            // rather than silently disabling spell checking.
-            Err(_) => dictionary::vietnamese(),
-        }
+        load_dictionary_override(dictionary_path).unwrap_or_else(dictionary::vietnamese)
     };
 
     let table = MacroTable::from_pairs(macros.into_iter().map(|pair| (pair.key, pair.value)));

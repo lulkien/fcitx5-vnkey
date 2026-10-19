@@ -32,6 +32,7 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include "vnkey-addon/src/bridge.rs.h"
@@ -169,6 +170,12 @@ private:
 
     Instance *instance_;
     VnKeyConfig config_;
+    // What the live engines were last built or flushed for; see populateConfig.
+    std::string appliedInputMethod_;
+    std::string appliedCharset_;
+    std::string warnedCharset_;
+    bool appliedVietnameseMode_ = true;
+    std::vector<std::pair<std::string, std::string>> appliedMacros_;
     VnKeyMacroTable macroTable_;
     FactoryFor<VnKeyState> factory_;
     std::vector<std::string> imNames_;

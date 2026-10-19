@@ -528,7 +528,7 @@ Windows 1258 codepage	Ù	UÌ
 Windows 1258 codepage	Ủ	UÒ
 Windows 1258 codepage	Ũ	UÞ
 Windows 1258 codepage	Ụ	Uò
-Windows 1258 codepage	Ứ	=Ýì
+Windows 1258 codepage	Ứ	Ýì
 Windows 1258 codepage	Ừ	ÝÌ
 Windows 1258 codepage	Ử	ÝÒ
 Windows 1258 codepage	Ữ	ÝÞ
@@ -754,12 +754,12 @@ VISCII	Ạ	€
 VISCII	Ấ	„
 VISCII	Ầ	…
 VISCII	Ẩ	†
-VISCII	Ẫ	ç
+VISCII	Ẫ	\u0006
 VISCII	Ậ	‡
 VISCII	Ắ	
 VISCII	Ằ	‚
-VISCII	Ẳ	Æ
-VISCII	Ẵ	Ç
+VISCII	Ẳ	\u0002
+VISCII	Ẵ	\u0005
 VISCII	Ặ	ƒ
 VISCII	É	É
 VISCII	È	È
@@ -779,7 +779,7 @@ VISCII	Ị	˜
 VISCII	Ó	Ó
 VISCII	Ò	Ò
 VISCII	Ỏ	™
-VISCII	Õ	õ
+VISCII	Õ	\u00A0
 VISCII	Ọ	š
 VISCII	Ố	
 VISCII	Ồ	
@@ -803,9 +803,9 @@ VISCII	Ữ	ÿ
 VISCII	Ự	¹
 VISCII	Ý	Ý
 VISCII	Ỳ	Ÿ
-VISCII	Ỷ	Ö
-VISCII	Ỹ	Û
-VISCII	Ỵ	Ü
+VISCII	Ỷ	\u0014
+VISCII	Ỹ	\u0019
+VISCII	Ỵ	\u001E
 VPS	đ	Ç
 VPS	â	â
 VPS	ă	æ
@@ -1846,5 +1846,37 @@ NCR Hex	Ỳ	&#x1EF2;
 NCR Hex	Ỷ	&#x1EF6;
 NCR Hex	Ỹ	&#x1EF8;
 NCR Hex	Ỵ	&#x1EF4;
+NCR Hex	â	&#xE2;
+NCR Hex	ê	&#xEA;
+NCR Hex	ô	&#xF4;
+NCR Hex	á	&#xE1;
+NCR Hex	à	&#xE0;
+NCR Hex	ã	&#xE3;
+NCR Hex	é	&#xE9;
+NCR Hex	è	&#xE8;
+NCR Hex	í	&#xED;
+NCR Hex	ì	&#xEC;
+NCR Hex	ó	&#xF3;
+NCR Hex	ò	&#xF2;
+NCR Hex	õ	&#xF5;
+NCR Hex	ú	&#xFA;
+NCR Hex	ù	&#xF9;
+NCR Hex	ý	&#xFD;
+NCR Hex	Â	&#xC2;
+NCR Hex	Ê	&#xCA;
+NCR Hex	Ô	&#xD4;
+NCR Hex	Á	&#xC1;
+NCR Hex	À	&#xC0;
+NCR Hex	Ã	&#xC3;
+NCR Hex	É	&#xC9;
+NCR Hex	È	&#xC8;
+NCR Hex	Í	&#xCD;
+NCR Hex	Ì	&#xCC;
+NCR Hex	Ó	&#xD3;
+NCR Hex	Ò	&#xD2;
+NCR Hex	Õ	&#xD5;
+NCR Hex	Ú	&#xDA;
+NCR Hex	Ù	&#xD9;
+NCR Hex	Ý	&#xDD;
 Unicode C string Hex		
 Unicode C string Decimal		

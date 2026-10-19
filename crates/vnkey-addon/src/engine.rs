@@ -5,10 +5,9 @@
 //! is the fcitx5 facade that calls into it.
 
 use std::collections::HashSet;
+use std::sync::Arc;
 
-use vnkey_core::utils::{
-    has_any_vietnamese_rune, has_any_vietnamese_vowel, is_word_break_symbol,
-};
+use vnkey_core::utils::{has_any_vietnamese_rune, has_any_vietnamese_vowel, is_word_break_symbol};
 use vnkey_core::{encode, Engine as Preeditor, Mode};
 
 use crate::macro_table::MacroTable;
@@ -59,7 +58,8 @@ pub fn determine_macro_case(text: &str) -> MacroCase {
 pub struct VnKeyEngine {
     preeditor: Preeditor,
     macro_table: MacroTable,
-    dictionary: HashSet<String>,
+    /// Shared, parsed once per process; never owned per engine.
+    dictionary: Arc<HashSet<String>>,
     options: Options,
     /// Global Vietnamese/English switch. Off = every key passes through.
     vietnamese_mode: bool,
@@ -67,14 +67,13 @@ pub struct VnKeyEngine {
     last_key_with_shift: bool,
     preedit_text: String,
     commit_text: String,
-    should_restore_key_strokes: bool,
 }
 
 impl VnKeyEngine {
     /// Build an engine for the named input method. `None` for unknown names.
     pub fn new(
         input_method: &str,
-        dictionary: HashSet<String>,
+        dictionary: Arc<HashSet<String>>,
         macro_table: MacroTable,
         options: Options,
     ) -> Option<VnKeyEngine> {
@@ -88,7 +87,6 @@ impl VnKeyEngine {
             last_key_with_shift: false,
             preedit_text: String::new(),
             commit_text: String::new(),
-            should_restore_key_strokes: false,
         })
     }
 
@@ -109,8 +107,26 @@ impl VnKeyEngine {
         self.options = options;
     }
 
-    pub fn set_restore_key_stroke(&mut self) {
-        self.should_restore_key_strokes = true;
+    /// Restore the raw keystrokes of the word currently being composed.
+    ///
+    /// Applied eagerly, in place: the facade swallows the hotkey itself, so
+    /// deferring the restore to the next key event would swallow that next
+    /// keystroke along with it.
+    ///
+    /// Returns `false`, touching nothing, when there is no composition: the
+    /// key is then an ordinary one and must reach the application. That has
+    /// to be decided here, before any word-break handling, which would
+    /// otherwise consume it (a macro-enabled engine commits the space).
+    pub fn restore_key_stroke(&mut self) -> bool {
+        if self.preedit_text.is_empty() {
+            return false;
+        }
+        let old_text = self.get_preedit_string();
+        self.preeditor
+            .restore_last_word(!has_any_vietnamese_rune(&old_text));
+        let restored = self.get_preedit_string();
+        self.update_preedit(&restored);
+        true
     }
 
     /// Vietnamese (true) or English (false) mode.
@@ -168,8 +184,7 @@ impl VnKeyEngine {
         let key_rune = rune_of(key_val);
         let old_text = self.get_preedit_string();
 
-        if !self.should_restore_key_strokes
-            && !self.preeditor.can_process_key(key_rune)
+        if !self.preeditor.can_process_key(key_rune)
             && raw_key_len == 0
             && !self.options.macro_enabled
         {
@@ -219,14 +234,6 @@ impl VnKeyEngine {
         let is_printable_key = self.is_printable_key(state, key_val);
         let old_text = self.get_preedit_string();
 
-        // restore key strokes by pressing Shift + Space
-        if self.should_restore_key_strokes {
-            self.should_restore_key_strokes = false;
-            self.preeditor
-                .restore_last_word(!has_any_vietnamese_rune(&old_text));
-            return (self.get_preedit_string(), false);
-        }
-
         let key_s = if is_printable_key {
             key_rune.to_string()
         } else {
@@ -256,10 +263,7 @@ impl VnKeyEngine {
                 if full_seq.ends_with(key_rune) {
                     // [[ => [
                     let ret = self.get_preedit_string();
-                    let is_word_break = ret
-                        .chars()
-                        .last()
-                        .is_some_and(is_word_break_symbol);
+                    let is_word_break = ret.chars().last().is_some_and(is_word_break_symbol);
                     if is_word_break {
                         self.preeditor.remove_last_char(false);
                         self.preeditor.process_key(' ', Mode::ENGLISH);
@@ -283,20 +287,13 @@ impl VnKeyEngine {
                 return (self.get_preedit_string(), false);
             }
         } else if self.options.macro_enabled {
-            if is_printable_key
-                && self
-                    .macro_table
-                    .has_prefix(&format!("{old_text}{key_s}"))
-            {
+            if is_printable_key && self.macro_table.has_prefix(&format!("{old_text}{key_s}")) {
                 self.preeditor.process_key(key_rune, Mode::ENGLISH);
                 return (format!("{old_text}{key_s}"), false);
             }
             if self.macro_table.has_key(&old_text) {
                 if is_printable_key {
-                    return (
-                        format!("{}{key_s}", self.expand_macro(&old_text)),
-                        true,
-                    );
+                    return (format!("{}{key_s}", self.expand_macro(&old_text)), true);
                 }
                 return (self.expand_macro(&old_text), true);
             }
@@ -445,18 +442,20 @@ impl VnKeyEngine {
     }
 
     fn update_preedit(&mut self, processed_str: &str) {
-        let encoded = self.encode_text(processed_str);
-        if encoded.chars().count() == 0 {
+        // The preedit stays readable Unicode; the charset applies on commit.
+        if processed_str.is_empty() {
             // Upstream clears both buffers here, including the commit string.
             self.preedit_text.clear();
             self.commit_text.clear();
             return;
         }
-        self.preedit_text = encoded;
+        self.preedit_text = processed_str.to_string();
     }
 
+    /// The single place text leaves the engine: every commit (word break,
+    /// macro, restore, mode flush, reset) is encoded here, exactly once.
     fn commit_preedit_and_reset(&mut self, text: &str) {
-        self.commit_text = text.to_string();
+        self.commit_text = self.encode_text(text);
         self.preedit_text.clear();
         self.preeditor.reset();
     }
@@ -497,8 +496,8 @@ impl VnKeyEngine {
 
     fn update_last_key_with_shift(&mut self, key_val: u32, state: u32) {
         let key_rune = rune_of(key_val);
-        self.last_key_with_shift = self.preeditor.can_process_key(key_rune)
-            && state & FCITX_SHIFT_MASK != 0;
+        self.last_key_with_shift =
+            self.preeditor.can_process_key(key_rune) && state & FCITX_SHIFT_MASK != 0;
     }
 
     fn is_printable_key(&self, state: u32, key_val: u32) -> bool {

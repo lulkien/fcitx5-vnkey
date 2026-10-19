@@ -85,9 +85,20 @@ once — no second input-method group needed:
 
 ## Data tables
 
-The input-method rules and the 16 legacy output charsets live as TSV under
+The input-method rules and the 16 output charset tables (legacy and offered) live as TSV under
 `tools/defs/`; the Rust modules `vnkey-core/src/{im_defs,charset}.rs` are
 generated from them and are never edited by hand.
+
+Commits are UTF-8 (or plain ASCII) only. The offered output charsets are
+`Unicode`, `UTF-8`, `Unicode tổ hợp` (decomposed), the escape forms
+`Unicode C string Hex` / `Decimal` and `NCR Hex` / `Decimal`; the escape forms
+are the way to get text into places that cannot take Vietnamese characters. The
+legacy byte charsets (TCVN3, VISCII, VNI, VPS, Vietware, BKHCM, Windows 1258)
+are not offered: fcitx5 hands commits to frontends as D-Bus type `s` and Wayland
+text-input-v3 strings, both of which must be valid UTF-8, so legacy bytes are
+rejected or replaced with `?` before an application sees them. Their tables stay
+in `tools/defs/charset.tsv` for a future byte-capable frontend. A config that
+still names one of them falls back to `Unicode` on load (logged once).
 
 ```
 just tables        # regenerate the .rs files from tools/defs/*.tsv

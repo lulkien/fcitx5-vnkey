@@ -6,8 +6,9 @@
 //! key streams; these tests are the local regression net.
 
 use std::collections::HashSet;
+use std::sync::Arc;
 
-use vnkey_addon::{VnKeyEngine, MacroTable, Options, FCITX_BACKSPACE, FCITX_LOCK_MASK, FCITX_TAB};
+use vnkey_addon::{MacroTable, Options, VnKeyEngine, FCITX_BACKSPACE, FCITX_LOCK_MASK, FCITX_TAB};
 
 fn engine_with(options: Options) -> VnKeyEngine {
     VnKeyEngine::new(
@@ -88,7 +89,8 @@ fn macro_expands_on_tab() {
         ..Options::default()
     };
     let macros = MacroTable::from_pairs([("vn", "Việt Nam")]);
-    let mut e = VnKeyEngine::new("Telex 2", HashSet::new(), macros, options).expect("Telex 2");
+    let mut e =
+        VnKeyEngine::new("Telex 2", Arc::new(HashSet::new()), macros, options).expect("Telex 2");
 
     type_str(&mut e, "vn");
     let consumed = e.process_key_event(FCITX_TAB, 0);
@@ -106,15 +108,96 @@ fn macro_capitalisation_follows_the_keystrokes() {
 }
 
 #[test]
-fn charset_encoding_is_applied_to_the_preedit() {
-    let options = Options {
-        output_charset: "TCVN3 (ABC)".to_string(),
-        ..Options::default()
-    };
-    let mut e = engine_with(options);
+fn charset_applies_to_the_commit_not_the_preedit() {
+    // Unicode: nothing changes.
+    let mut e = engine();
     type_str(&mut e, "ddaw");
-    // TCVN3 has no combining forms: đ -> ®, ă -> ¨ (from the generated table).
-    assert_eq!(e.pull_preedit(), "®¨");
+    assert_eq!(e.pull_preedit(), "đă");
+    e.process_key_event(' ' as u32, 0);
+    assert_eq!(e.pull_commit(), "đă ");
+
+    // Escape charsets: the preedit stays readable, the commit is escaped.
+    let cases = [
+        ("Unicode C string Hex", "\\u0111\\u0103 "),
+        ("NCR Decimal", "&#273;&#259; "),
+        ("NCR Hex", "&#x111;&#x103; "),
+    ];
+    for (charset, text) in cases {
+        let mut e = engine_with(Options {
+            output_charset: charset.to_string(),
+            ..Options::default()
+        });
+        type_str(&mut e, "ddaw");
+        assert_eq!(e.pull_preedit(), "đă", "{charset}: preedit stays Unicode");
+        e.process_key_event(' ' as u32, 0);
+        assert_eq!(e.pull_commit(), text, "{charset}");
+    }
+}
+
+#[test]
+fn charset_applies_to_macro_and_flush_commits() {
+    let mut e = VnKeyEngine::new(
+        "Telex 2",
+        vnkey_addon::dictionary::vietnamese(),
+        MacroTable::from_pairs([("vn", "Việt Nam")]),
+        Options {
+            output_charset: "NCR Decimal".to_string(),
+            macro_enabled: true,
+            ..Options::default()
+        },
+    )
+    .expect("Telex 2");
+    type_str(&mut e, "vn");
+    e.process_key_event(FCITX_TAB, 0);
+    // The expansion is encoded once.
+    assert_eq!(e.pull_commit(), "Vi&#7879;t Nam");
+
+    // An explicit commit is encoded too.
+    type_str(&mut e, "ddaw");
+    e.commit_preedit();
+    assert_eq!(e.pull_commit(), "&#273;&#259;");
+}
+
+/// The facade must not call `process_key_event` for the restore hotkey when
+/// there is nothing to restore (a macro-enabled engine would commit the space
+/// and eat the key); `restore_key_stroke() == false` is what tells it so.
+/// Covers the engine side of that decision, not the C++ branch itself.
+#[test]
+fn restore_key_is_not_ours_without_a_composition() {
+    for macro_enabled in [true, false] {
+        let mut e = engine_with(Options {
+            macro_enabled,
+            ..Options::default()
+        });
+        assert!(!e.restore_key_stroke(), "vietnamese, macro {macro_enabled}");
+        assert!(e.pull_commit().is_empty());
+        assert_eq!(e.pull_preedit(), "");
+    }
+
+    let mut e = engine();
+    e.set_vietnamese_mode(false);
+    assert!(!e.restore_key_stroke(), "english");
+    assert!(e.pull_commit().is_empty());
+
+    // With a composition it is ours.
+    let mut e = engine();
+    type_str(&mut e, "vieetj");
+    assert!(e.restore_key_stroke());
+    assert_eq!(e.pull_preedit(), "vieetj");
+}
+
+/// Config-driven switch to English: the facade commits the word first
+/// (`commitBuffer`), then applies the mode. Afterwards nothing is left to
+/// restore, so the next Shift+Space reaches the application.
+#[test]
+fn leaving_vietnamese_mode_through_config_leaves_no_stale_preedit() {
+    let mut e = engine();
+    type_str(&mut e, "vie");
+    e.commit_preedit();
+    e.set_vietnamese_mode(false);
+    assert_eq!(e.pull_commit(), "vie");
+    assert_eq!(e.pull_preedit(), "");
+    assert!(!e.restore_key_stroke());
 }
 
 #[test]
@@ -132,10 +215,13 @@ fn english_mode_passes_everything_through() {
     assert!(!e.vietnamese_mode());
 
     for ch in "vieetj".chars() {
-        assert!(!e.process_key_event(ch as u32, 0), "key must not be swallowed");
+        assert!(
+            !e.process_key_event(ch as u32, 0),
+            "key must not be swallowed"
+        );
     }
     assert_eq!(e.pull_preedit(), "");
-    assert_eq!(e.pull_commit(), "");
+    assert!(e.pull_commit().is_empty());
 }
 
 #[test]
@@ -170,4 +256,29 @@ fn toggle_flips_and_reports() {
     assert!(e.vietnamese_mode());
     assert!(!e.toggle_vietnamese_mode());
     assert!(e.toggle_vietnamese_mode());
+}
+
+#[test]
+fn embedded_dictionary_is_parsed_once_and_shared() {
+    // Engines are rebuilt per config change and per input context; the set must
+    // not be re-parsed or copied for each of them.
+    let a = vnkey_addon::dictionary::vietnamese();
+    let b = vnkey_addon::dictionary::vietnamese();
+    assert!(Arc::ptr_eq(&a, &b));
+    assert!(!a.is_empty());
+}
+
+#[test]
+fn restore_key_stroke_rewrites_the_word_in_place() {
+    let mut e = engine();
+    type_str(&mut e, "vieetj");
+    assert_eq!(e.pull_preedit(), "việt");
+
+    // Applied eagerly: the facade swallows the hotkey and re-renders this.
+    e.restore_key_stroke();
+    assert_eq!(e.pull_preedit(), "vieetj");
+
+    // The keystroke after the hotkey must still land.
+    e.process_key_event('x' as u32, 0);
+    assert_eq!(e.pull_preedit(), "vieetjx");
 }

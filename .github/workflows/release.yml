@@ -31,6 +31,8 @@ jobs:
             libfcitx5core-dev libfcitx5config-dev libfcitx5utils-dev
 
       - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
       - uses: Swatinem/rust-cache@v2
       - uses: extractions/setup-just@v4
 
@@ -51,6 +53,7 @@ jobs:
 
       - name: Test
         run: |
+          just lint
           just check
           just test
 

@@ -38,7 +38,7 @@ pub fn find_tone_from_char(chr: char) -> Tone {
 /// Replace the tone of a vowel, keeping its mark. `tone == Tone::None` strips it.
 pub fn add_tone_to_char(chr: char, tone: u8) -> char {
     match find_vowel_position(chr) {
-        Some(pos) => VOWEL_ROWS[pos / 6][tone as usize],
+        Some(pos) => VOWEL_ROWS[pos / 6].get(tone as usize).copied().unwrap_or(chr),
         None => chr,
     }
 }
@@ -62,14 +62,10 @@ pub fn find_mark_from_char(chr: char) -> Option<Mark> {
 /// Apply a mark slot to a toneless character; `_` slots leave it unchanged.
 pub fn add_mark_to_toneless_char(chr: char, mark: u8) -> char {
     match mark_row(chr) {
-        Some(row) => {
-            let candidate = row[mark as usize];
-            if candidate != '_' {
-                candidate
-            } else {
-                chr
-            }
-        }
+        Some(row) => match row.get(mark as usize) {
+            Some(&candidate) if candidate != '_' => candidate,
+            _ => chr,
+        },
         None => chr,
     }
 }

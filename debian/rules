@@ -27,11 +27,13 @@ binary: build
 	rm -rf $(PKGDIR)
 	DESTDIR=$(CURDIR)/$(PKGDIR) just --no-deps install
 	install -d $(PKGDIR)/DEBIAN
-	dpkg-gencontrol -pfcitx5-vnkey -P$(PKGDIR)
+	dpkg-shlibdeps -Tdebian/fcitx5-vnkey.substvars \
+		-e$$(find $(PKGDIR) -name libvnkey.so)
+	dpkg-gencontrol -pfcitx5-vnkey -P$(PKGDIR) -Tdebian/fcitx5-vnkey.substvars
 	dpkg-deb --root-owner-group --build $(PKGDIR) ..
 
 # Keep target/: a rebuild after `clean` would recompile every crate.
 clean:
-	rm -rf $(PKGDIR) out
+	rm -rf $(PKGDIR) out debian/fcitx5-vnkey.substvars
 
 .PHONY: check-version build binary clean

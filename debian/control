@@ -10,7 +10,7 @@ Homepage: https://github.com/lulkien/fcitx5-vnkey
 
 Package: fcitx5-vnkey
 Architecture: any
-Depends: libfcitx5core7, libfcitx5config6, libfcitx5utils2, libstdc++6, libc6
+Depends: ${shlibs:Depends}
 Recommends: fcitx5
 Description: Vietnamese input method for fcitx5, Rust engine
  A Vietnamese input-method engine written in Rust, wrapped in a small fcitx5
