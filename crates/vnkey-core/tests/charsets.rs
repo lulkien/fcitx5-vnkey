@@ -290,3 +290,21 @@ fn fixed_legacy_rows_are_pinned() {
     // Windows 1258 Ứ: U+00DD U+00EC, no stray '='.
     assert_eq!(encode("Windows 1258 codepage", "Ứ"), "\u{DD}\u{EC}");
 }
+
+/// Real control characters (not the two-character sequences) must not reach a
+/// C literal raw; NUL in particular would truncate the facade's std::string.
+#[test]
+fn c_string_hex_escapes_control_characters() {
+    let hex = "Unicode C string Hex";
+    assert_eq!(encode(hex, "a\nb"), "a\\nb");
+    assert_eq!(encode(hex, "a\rb"), "a\\rb");
+    assert_eq!(encode(hex, "a\tb"), "a\\tb");
+    assert_eq!(encode(hex, "a\0b"), "a\\000b");
+    // Octal is fixed-width, so a digit after the escape is not absorbed.
+    assert_eq!(encode(hex, "\x011"), "\\0011");
+    assert_eq!(encode(hex, "\x7f"), "\\177");
+    for text in ["a\nb", "\0", "\x1b[0m", "\x7f"] {
+        let out = encode(hex, text);
+        assert!(out.chars().all(|c| !c.is_control()), "{out:?}");
+    }
+}

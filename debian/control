@@ -15,5 +15,5 @@ Recommends: fcitx5
 Description: Vietnamese input method for fcitx5, Rust engine
  A Vietnamese input-method engine written in Rust, wrapped in a small fcitx5
  addon. Supports the Telex, Telex 2, Telex W, VNI, VIQR and Microsoft layouts,
- sixteen legacy output charsets, macros, an embedded spell-check dictionary,
- and a daemon-wide Vietnamese/English mode toggle.
+ seven UTF-8 output charsets (Unicode, UTF-8, decomposed Unicode, C-string and
+ NCR escapes), macros, an embedded spell-check dictionary, and a daemon-wide Vietnamese/English mode toggle.

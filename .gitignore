@@ -1,6 +1,9 @@
 # Rust
 /target/
 
+# Python bytecode from tools/gen_tables.py
+/tools/__pycache__/
+
 # Packaging output
 /dist/
 *.deb

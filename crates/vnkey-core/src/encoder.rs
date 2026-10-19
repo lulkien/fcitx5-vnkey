@@ -50,7 +50,8 @@ pub fn charset_names() -> Vec<&'static str> {
     OFFERED.to_vec()
 }
 
-/// A valid C string literal body: ASCII kept (`\` and `"` escaped), a BMP
+/// A valid C string literal body: printable ASCII kept (`\`, `"` and control
+/// characters escaped), a BMP
 /// character as `\uXXXX`, anything above U+FFFF as `\UXXXXXXXX`; hex uppercase.
 fn escape_c_hex(input: &str) -> String {
     let mut out = String::with_capacity(input.len());
@@ -58,6 +59,12 @@ fn escape_c_hex(input: &str) -> String {
         match chr {
             '\\' => out.push_str("\\\\"),
             '"' => out.push_str("\\\""),
+            '\n' => out.push_str("\\n"),
+            '\r' => out.push_str("\\r"),
+            '\t' => out.push_str("\\t"),
+            // Three-digit octal never swallows a following digit, unlike \0
+            // or \x; this also keeps NUL out of the C++ std::string.
+            c if c.is_ascii_control() => out.push_str(&format!("\\{:03o}", c as u32)),
             c if c.is_ascii() => out.push(c),
             c if (c as u32) <= 0xFFFF => out.push_str(&format!("\\u{:04X}", c as u32)),
             c => out.push_str(&format!("\\U{:08X}", c as u32)),

@@ -26,7 +26,7 @@ fcitx5 development headers (`python3` only for regenerating the tables,
 ```
 sudo apt install libfcitx5core-dev libfcitx5config-dev libfcitx5utils-dev
 just build          # -> target/release/libvnkey.so
-just test           # 63 tests, no system dependencies
+just test           # 79 tests, no system dependencies
 just check          # tables up to date, factory symbol exported, no undefined symbols
 ```
 

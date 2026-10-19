@@ -117,10 +117,16 @@ public:
     void keyEvent(KeyEvent &keyEvent);
     void reset();
     void commitBuffer();
+    /// Commit (focused) or drop (unfocused) the pending word, then reset.
+    void flush();
+    /// Redraw the panel from the engine's preedit, if there is one.
+    void repaint();
 
     bool ready() const { return engine_.has_value() && (*engine_)->valid(); }
 
 private:
+    void render(const rust::String &preedit);
+
     VnKeyEngine *owner_;
     InputContext *ic_;
     std::optional<rust::Box<vnkey::EngineHandle>> engine_;
@@ -166,6 +172,8 @@ public:
     void toggleVietnameseMode(InputContext *ic);
 
 private:
+    /// Replace an unoffered output charset with Unicode; true if it changed.
+    bool normalizeCharset();
     void populateConfig();
 
     Instance *instance_;

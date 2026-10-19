@@ -143,7 +143,21 @@ void VnKeyState::keyEvent(KeyEvent &keyEvent) {
     if (!hadPreedit && preedit.empty()) {
         return;
     }
+    render(preedit);
+}
 
+void VnKeyState::repaint() {
+    if (!ready()) {
+        return;
+    }
+    const auto preedit = (*engine_)->pull_preedit();
+    // Nothing composed: the panel is already empty, nothing to repaint.
+    if (!preedit.empty()) {
+        render(preedit);
+    }
+}
+
+void VnKeyState::render(const rust::String &preedit) {
     ic_->inputPanel().reset();
     if (!preedit.empty()) {
         Text text;
@@ -171,6 +185,17 @@ void VnKeyState::reset() {
     }
     ic_->updateUserInterface(UserInterfaceComponent::InputPanel);
     ic_->updatePreedit();
+}
+
+void VnKeyState::flush() {
+    // Only the focused context may commit: commitString on an unfocused one
+    // lands in a window the user is not typing in. Its word is dropped, like a
+    // focus-out (see VnKeyEngine::deactivate), but the engine still resets.
+    if (ic_->hasFocus()) {
+        commitBuffer();
+    } else {
+        reset();
+    }
 }
 
 void VnKeyState::commitBuffer() {
@@ -301,11 +326,17 @@ VnKeyEngine::VnKeyEngine(Instance *instance)
 void VnKeyEngine::reloadConfig() {
     readAsIni(config_, "conf/vnkey.conf");
     readAsIni(macroTable_, MacroFile);
+    // Persist the fallback once, so a hand-edited legacy name is not
+    // re-announced on every start.
+    if (normalizeCharset()) {
+        saveConfig();
+    }
     populateConfig();
 }
 
 void VnKeyEngine::setConfig(const RawConfig &config) {
     config_.load(config, true);
+    normalizeCharset();
     saveConfig();
     populateConfig();
 }
@@ -326,18 +357,23 @@ void VnKeyEngine::setSubConfig(const std::string &path,
     }
 }
 
-void VnKeyEngine::populateConfig() {
+bool VnKeyEngine::normalizeCharset() {
     // The legacy byte charsets are not offered any more (commitString needs
     // UTF-8). A config that still names one would otherwise emit mojibake.
     if (std::find(charsets_.begin(), charsets_.end(),
-                  *config_.outputCharset) == charsets_.end()) {
-        if (warnedCharset_ != *config_.outputCharset) {
-            warnedCharset_ = *config_.outputCharset;
-            FCITX_INFO() << "Bamboors: output charset \"" << warnedCharset_
-                         << "\" is no longer offered; using Unicode";
-        }
-        config_.outputCharset.setValue("Unicode");
+                  *config_.outputCharset) != charsets_.end()) {
+        return false;
     }
+    if (warnedCharset_ != *config_.outputCharset) {
+        warnedCharset_ = *config_.outputCharset;
+        FCITX_INFO() << "Bamboors: output charset \"" << warnedCharset_
+                     << "\" is no longer offered; using Unicode";
+    }
+    config_.outputCharset.setValue("Unicode");
+    return true;
+}
+
+void VnKeyEngine::populateConfig() {
     // Only an input-method or macro-table change needs a new engine (and so a
     // flush; macros are copied into the engine when it is built). Any other
     // setting is applied to the live engines without touching the word being
@@ -415,7 +451,7 @@ void VnKeyEngine::refreshEngine() {
         auto *state = ic->propertyFor(&factory_);
         // Flush the half-typed word before the engine is replaced: a config
         // change must not silently discard what the user was typing.
-        state->commitBuffer();
+        state->flush();
         state->setEngine();
         return true;
     });
@@ -437,9 +473,12 @@ void VnKeyEngine::refreshOption() {
     instance_->inputContextManager().foreach([this, flush](InputContext *ic) {
         auto *state = ic->propertyFor(&factory_);
         if (flush) {
-            state->commitBuffer();
+            state->flush();
         }
         state->setOption();
+        if (!flush && ic->hasFocus()) {
+            state->repaint();
+        }
         return true;
     });
 }
@@ -486,7 +525,7 @@ void VnKeyEngine::toggleVietnameseMode(InputContext *ic) {
     if (factory_.registered()) {
         instance_->inputContextManager().foreach([this](InputContext *context) {
             auto *state = context->propertyFor(&factory_);
-            state->commitBuffer();
+            state->flush();
             state->setOption();
             state->reset();
             return true;
